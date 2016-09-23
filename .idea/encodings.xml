@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/menu/Connectivity.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/menu/Ficheros.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/menu/Menus.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/menu/Network.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/menu/NetworkURLFragment.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/menu/NetworkWebFragment.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/menu/ProviderUse.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/menu/WiFiScanReceiver.java" charset="ISO-8859-1" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>
