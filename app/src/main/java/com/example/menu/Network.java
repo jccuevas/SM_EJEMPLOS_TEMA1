@@ -195,7 +195,7 @@ public class Network extends Activity {
 
 
 	/**
-	 * Se ejecuta al pulsar el botón conectar con get
+	 * Se ejecuta al pulsar el boton conectar con get
 	 * 
 	 * @param view
 	 */

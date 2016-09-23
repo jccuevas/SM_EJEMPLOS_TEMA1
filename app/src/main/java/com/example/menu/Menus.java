@@ -1,12 +1,13 @@
 package com.example.menu;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.KeyEvent;
@@ -25,9 +26,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import es.ujaen.ejemplostema2.FragmentAlmacenamiento;
+import es.ujaen.ejemplostema2.FragmentInfo;
 import es.ujaen.ejemplostema2.R;
 
-public class Menus extends Activity implements OnKeyListener {
+public class Menus extends AppCompatActivity implements OnKeyListener {
 	public static final String FRAGMENT_DETAILS = "detailsfragment";
 	private FragmentManager mManager = null;
 	private int posTouched = -1;
@@ -39,7 +42,7 @@ public class Menus extends Activity implements OnKeyListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_menu);
 
-		mManager = getFragmentManager();
+		mManager = getSupportFragmentManager();
 		Fragment f = mManager.findFragmentByTag(FRAGMENT_DETAILS);
 		if (f == null) {
 			FragmentTransaction ft = mManager.beginTransaction();
@@ -197,7 +200,7 @@ public class Menus extends Activity implements OnKeyListener {
 					switch (position) {
 					case 0:
 						Intent newactivity_ficheros = new Intent(
-								getApplicationContext(), Ficheros.class);
+								getApplicationContext(), FragmentAlmacenamiento.class);
 						startActivity(newactivity_ficheros);
 						break;
 					case 1:

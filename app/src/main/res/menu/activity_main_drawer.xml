@@ -3,14 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_almacenamiento"
-            android:icon="@drawable/ic_action_storing"
-            android:title="@string/navmenu_almacenamientot" />
+
         <item
             android:id="@+id/nav_layouts"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/navmenu_linearlayout" />
+        <item
+            android:id="@+id/nav_almacenamiento"
+            android:icon="@drawable/ic_action_storing"
+            android:title="@string/navmenu_almacenamientot" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"

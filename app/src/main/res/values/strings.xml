@@ -41,10 +41,7 @@
     <string name="menu_files">Grabar datos</string>
 
     <string name="help_title">Ayuda de la aplicación de ejemplos</string>
-	<string name="help_text">Esta es una aplicación de la asignatura,
-		Aplicaciones para Telefonía Móvil de la titulación de Ingeniería de
-		Telecomunicación de la Universidad de Jaén
-	</string>
+	<string name="help_text">Esta es una aplicación para mostrar los ejemplos de clase de la asignatura Servicios Móviles del Grado de Ingeniería Telemática de la Universidad de Jaén</string>
     <string name="help_uja">Universidad de Jaén</string>
 	<string name="help_ninepatch">El fondo del TextView del pie de la pantalla es un
 		nine patch, revísalo para comprobar como funcionan
@@ -129,4 +126,5 @@
     <string name="wifipower_best">es la que tiene mejor señal.</string>
 
     <string name="network_url_browse">Ir</string>
+    <string name="contentdescription_logouja">Logo UJA</string>
 </resources>

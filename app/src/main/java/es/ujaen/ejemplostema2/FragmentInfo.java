@@ -1,6 +1,6 @@
-package com.example.menu;
+package es.ujaen.ejemplostema2;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,11 +14,7 @@ public class FragmentInfo extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		
-			
-		
-		View fragment = inflater.inflate(R.layout.layout_fragmentinfo, null);
-		
-		
+		View fragment = inflater.inflate(R.layout.layout_fragment_info, null);
 		
 		return fragment;
 		

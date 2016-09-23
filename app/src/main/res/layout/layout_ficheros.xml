@@ -95,15 +95,13 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onSave"
             android:text="@string/button_save" />
 
         <Button
-            android:id="@+id/framentmenu_launchbutton"
+            android:id="@+id/ficheros_button_load"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onLoad"
             android:text="@string/ficheros_load" />
     </LinearLayout>
 
@@ -119,19 +117,17 @@
         android:layout_height="wrap_content" >
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/ficheros_button_save_ex"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onSaveExternal"
             android:text="@string/ficheros_save" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/ficheros_button_load_Ex"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onLoadExternal"
             android:text="@string/ficheros_load" />
 
     </LinearLayout>
@@ -148,19 +144,17 @@
         android:layout_height="wrap_content" >
         
             <Button
-            android:id="@+id/button_dbSave"
+            android:id="@+id/ficheros_button_save_db"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onSaveDatabase"
-            android:text="@string/ficheros_save" />
+                android:text="@string/ficheros_save" />
 
         <Button
-            android:id="@+id/button_dbLoad"
+            android:id="@+id/ficheros_button_load_db"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onLoadDatabase"
             android:text="@string/ficheros_load" />
     </LinearLayout>
 

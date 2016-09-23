@@ -33,7 +33,7 @@
         <activity android:name="com.example.menu.Settings" android:label="@string/title_activity_menus" android:theme="@style/AppTheme"></activity>
         <activity android:name="com.example.menu.Graficos" android:label="@string/app_graficos" android:theme="@style/AppTheme"></activity>
         <activity android:name="com.example.menu.Help" android:label="@string/app_help" android:theme="@style/AppTheme"></activity>
-        <activity android:name="com.example.menu.Ficheros" android:label="@string/app_ficheros" android:theme="@style/AppTheme"></activity>
+        <activity android:name=".FragmentAlmacenamiento" android:label="@string/app_ficheros" android:theme="@style/AppTheme"></activity>
         <activity android:name="com.example.menu.Fragmentos" android:label="@string/app_fragments" android:theme="@style/AppTheme"></activity>
         <activity android:name="com.example.menu.FragmentosDinamicos" android:label="@string/app_fragments_dinamicos" android:theme="@style/AppTheme"></activity>
         <activity android:label="@string/app_networking" android:name="com.example.menu.Network" android:theme="@style/AppTheme"></activity>

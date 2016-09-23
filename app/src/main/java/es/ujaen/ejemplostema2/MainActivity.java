@@ -1,9 +1,10 @@
 package es.ujaen.ejemplostema2;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,10 +15,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.menu.Ficheros;
-
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    FragmentManager mFM = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +27,26 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+        mFM = getSupportFragmentManager();
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                FragmentTransaction ft = mFM.beginTransaction();
+                FragmentInfo info = new FragmentInfo();
+                Fragment f = mFM.findFragmentById(R.id.contenedor);
+                if (f != null) {
+                    ft.remove(f);
+                    ft.replace(R.id.contenedor, info);
+                } else {
+                    ft.add(R.id.contenedor, info, "INFO");
+                }
+                ft.commit();
+
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
             }
         });
 
@@ -43,6 +58,8 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
     }
 
     @Override
@@ -59,6 +76,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+
         return true;
     }
 
@@ -84,9 +102,17 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_almacenamiento) {
-            Intent newactivity_ficheros = new Intent(
-                    getApplicationContext(), Ficheros.class);
-            startActivity(newactivity_ficheros);
+
+            FragmentTransaction ft = mFM.beginTransaction();
+            Fragment f = mFM.findFragmentById(R.id.contenedor);
+            FragmentAlmacenamiento almacenamiento = new FragmentAlmacenamiento();
+            if (f != null) {
+                ft.remove(f);
+                ft.replace(R.id.contenedor, almacenamiento);
+            } else {
+                ft.add(R.id.contenedor, almacenamiento, "almacenamiento");
+            }
+            ft.commit();
         } else if (id == R.id.nav_layouts) {
 
         } else if (id == R.id.nav_slideshow) {
