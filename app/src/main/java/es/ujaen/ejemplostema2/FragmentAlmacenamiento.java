@@ -13,7 +13,9 @@ import java.util.List;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +41,8 @@ public class FragmentAlmacenamiento extends Fragment {
     Button mBotonGrabarDB = null;
     Button mBotonCargarDB = null;
 
+    protected View mFragmentView = null;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,19 +56,19 @@ public class FragmentAlmacenamiento extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View fragment = inflater.inflate(R.layout.layout_ficheros, null);
+        mFragmentView = inflater.inflate(R.layout.layout_ficheros, null);
 
-        mEdit_t = (EditText) fragment.findViewById(R.id.ficheros_editText_texto);
-        mEdit_n = (EditText) fragment.findViewById(R.id.ficheros_editText_value);
-        mEdit_f = (EditText) fragment.findViewById(R.id.ficheros_editText_filename);
-        resultado = (TextView) fragment.findViewById(R.id.ficheros_textView_result);
+        mEdit_t = (EditText) mFragmentView.findViewById(R.id.ficheros_editText_texto);
+        mEdit_n = (EditText) mFragmentView.findViewById(R.id.ficheros_editText_value);
+        mEdit_f = (EditText) mFragmentView.findViewById(R.id.ficheros_editText_filename);
+        resultado = (TextView) mFragmentView.findViewById(R.id.ficheros_textView_result);
 
-         mBotonGrabar = (Button) fragment.findViewById(R.id.ficheros_button_save);
-         mBotonCargar = (Button) fragment.findViewById(R.id.ficheros_button_load);
-         mBotonGrabarEx = (Button) fragment.findViewById(R.id.ficheros_button_save_ex);
-         mBotonCargarEx = (Button) fragment.findViewById(R.id.ficheros_button_save_ex);
-         mBotonGrabarDB = (Button) fragment.findViewById(R.id.ficheros_button_save_db);
-         mBotonCargarDB = (Button) fragment.findViewById(R.id.ficheros_button_save_db);
+         mBotonGrabar = (Button) mFragmentView.findViewById(R.id.ficheros_button_save);
+         mBotonCargar = (Button) mFragmentView.findViewById(R.id.ficheros_button_load);
+         mBotonGrabarEx = (Button) mFragmentView.findViewById(R.id.ficheros_button_save_ex);
+         mBotonCargarEx = (Button) mFragmentView.findViewById(R.id.ficheros_button_load_Ex);
+         mBotonGrabarDB = (Button) mFragmentView.findViewById(R.id.ficheros_button_save_db);
+         mBotonCargarDB = (Button) mFragmentView.findViewById(R.id.ficheros_button_load_db);
 
         mBotonGrabar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,11 +106,13 @@ public class FragmentAlmacenamiento extends Fragment {
                 loadDatabase();
             }
         });
-        return fragment;
+        return mFragmentView;
 
     }
 
-
+    /**
+     * Graba en un fichero interno los datos leídos de
+     */
     public void save() {
         int value;
 
@@ -114,10 +120,8 @@ public class FragmentAlmacenamiento extends Fragment {
         String value_s = mEdit_n.getEditableText().toString();
         String filename = mEdit_f.getEditableText().toString();
 
-
         if (value_s != null)
             try {
-
                 value = Integer.valueOf(value_s);
             } catch (NumberFormatException es) {
                 value = 0;
@@ -126,9 +130,7 @@ public class FragmentAlmacenamiento extends Fragment {
             value = 0;
 
         try {
-
             FileOutputStream os = getContext().openFileOutput(filename, Context.MODE_PRIVATE);
-
 
 			/* Escritura sin serializacion*/
             //DataOutputStream dos = new DataOutputStream(os);
@@ -172,7 +174,6 @@ public class FragmentAlmacenamiento extends Fragment {
 
             if (numero != null) {
                 try {
-
                     n = Integer.valueOf(numero);
                 } catch (NumberFormatException es) {
                     n = 0;
@@ -181,7 +182,7 @@ public class FragmentAlmacenamiento extends Fragment {
                 n = 0;
 
             try {
-                File path = Environment.getExternalStoragePublicDirectory("");
+                File path = getContext().getExternalFilesDir(null);
 
                 if (path != null) {
                     File file = new File(path, filename);
@@ -205,9 +206,11 @@ public class FragmentAlmacenamiento extends Fragment {
                             Toast.LENGTH_SHORT).show();
                 }
             } catch (IOException ex) {
-                Toast.makeText(getContext(),
-                        getResources().getString(R.string.toast_error),
-                        Toast.LENGTH_SHORT).show();
+                Snackbar.make(mFragmentView, getResources().getString(R.string.toast_error)+" "+ex.getMessage(), Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+//                Toast.makeText(getContext(),
+//                        getResources().getString(R.string.toast_error)+" "+ex.getMessage(),
+//                        Toast.LENGTH_SHORT).show();
             }
         } else
             Toast.makeText(getContext(),
@@ -238,7 +241,6 @@ public class FragmentAlmacenamiento extends Fragment {
                     }
                 }
             } catch (ClassNotFoundException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
             is.close();
@@ -248,8 +250,9 @@ public class FragmentAlmacenamiento extends Fragment {
                     Toast.LENGTH_SHORT).show();
 
         } catch (IOException ex) {
+            ex.printStackTrace();
             Toast.makeText(getContext(),
-                    getResources().getString(R.string.toast_error),
+                    getResources().getString(R.string.toast_error)+" "+ex.getMessage(),
                     Toast.LENGTH_SHORT).show();
         }
     }
@@ -265,24 +268,29 @@ public class FragmentAlmacenamiento extends Fragment {
             try {
                 String filename = mEdit_f.getEditableText().toString();
 
-                FileInputStream os = getContext().openFileInput(filename);
-                DataInputStream dos = new DataInputStream(os);
-                int n = dos.available();
-                texto = "Leidos (" + n + " bytes)\r\n";
-                while (dos.available() > 0) {
-                    texto = texto + " clave: " + dos.readUTF() + " valor:"
-                            + dos.readInt() + "\r\n";
+                File path = getContext().getExternalFilesDir(null);
+
+                if (path != null) {
+                    File file = new File(path, filename);
+
+                    FileInputStream os = new FileInputStream(file);
+                    DataInputStream dos = new DataInputStream(os);
+                    int n = dos.available();
+                    texto = "Leidos (" + n + " bytes)\r\n";
+                    while (dos.available() > 0) {
+                        texto = texto + " clave: " + dos.readUTF() + " valor:"
+                                + dos.readInt() + "\r\n";
+                    }
+
+                    resultado.setText(texto);
+
+                    dos.close();
+                    os.close();
+
+                    Toast.makeText(getContext(),
+                            getResources().getString(R.string.toast_loaded),
+                            Toast.LENGTH_SHORT).show();
                 }
-
-                resultado.setText(texto);
-
-                dos.close();
-                os.close();
-
-                Toast.makeText(getContext(),
-                        getResources().getString(R.string.toast_loaded),
-                        Toast.LENGTH_SHORT).show();
-
             } catch (IOException ex) {
                 Toast.makeText(getContext(),
                         getResources().getString(R.string.toast_error),
