@@ -1,14 +1,15 @@
 package com.example.menu;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import es.ujaen.ejemplostema2.R;
-public class Fragmentos extends Activity {
+
+public class Fragmentos extends AppCompatActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -17,7 +18,7 @@ public class Fragmentos extends Activity {
 	}
 
 	public void show() {
-		FragmentManager fm = getFragmentManager();
+		FragmentManager fm = getSupportFragmentManager();
 		FragmentTransaction ft = fm.beginTransaction();
 
 		Fragment fragment = fm.findFragmentById(R.id.fragment_viewer);
@@ -36,7 +37,7 @@ public class Fragmentos extends Activity {
 	}
 
 	public void replace() {
-		FragmentManager fm = getFragmentManager();
+		FragmentManager fm = getSupportFragmentManager();
 		FragmentTransaction ft = fm.beginTransaction();
 
 		Fragment fragment = fm.findFragmentById(R.id.fragment_container);
@@ -63,7 +64,7 @@ public class Fragmentos extends Activity {
 	}
 
 	public void hide() {
-		FragmentManager fm = getFragmentManager();
+		FragmentManager fm = getSupportFragmentManager();
 		Fragment fragment = fm.findFragmentById(R.id.fragment_viewer);
 
 		FragmentTransaction ft = fm.beginTransaction();

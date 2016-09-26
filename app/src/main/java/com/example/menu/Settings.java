@@ -1,14 +1,16 @@
 package com.example.menu;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
+
+import es.ujaen.ejemplostema2.Lista;
 import es.ujaen.ejemplostema2.R;
 
-public class Settings extends Activity {
+public class Settings extends AppCompatActivity {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -18,7 +20,7 @@ public class Settings extends Activity {
 	}
 
 	public void onClickShow(View view) {
-		FragmentManager fm = getFragmentManager();
+		FragmentManager fm = getSupportFragmentManager();
 		Fragment fragment = fm.findFragmentById(R.id.fragment_list);
 
 		FragmentTransaction ft = fm.beginTransaction();

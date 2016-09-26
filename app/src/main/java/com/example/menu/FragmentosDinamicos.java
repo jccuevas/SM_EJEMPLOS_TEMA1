@@ -1,15 +1,17 @@
 package com.example.menu;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import es.ujaen.ejemplostema2.Panel;
 import es.ujaen.ejemplostema2.R;
 
-public class FragmentosDinamicos extends Activity {
+public class FragmentosDinamicos extends AppCompatActivity {
 	public static final String TAG_PANEL = "panel";
 	public static final String TAG_BARRA = "barra";
 
@@ -20,7 +22,7 @@ public class FragmentosDinamicos extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.fragmentdynamic_layout);
 
-		mManager = getFragmentManager();
+		mManager = getSupportFragmentManager();
 
 		Barra barra = new Barra();
 

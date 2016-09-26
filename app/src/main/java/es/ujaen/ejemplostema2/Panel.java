@@ -1,9 +1,9 @@
-package com.example.menu;
+package es.ujaen.ejemplostema2;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -14,6 +14,10 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.menu.Car;
+import com.example.menu.NewListAdapter;
+
 import es.ujaen.ejemplostema2.R;
 
 public class Panel extends Fragment {

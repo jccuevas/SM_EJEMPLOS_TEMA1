@@ -217,7 +217,7 @@ public class Network extends Activity {
 	}
 	
 	/**
-	 * Se ejecuta al pulsar el botón conectar con get
+	 * Se ejecuta al pulsar el boton conectar con get
 	 * 
 	 * @param view
 	 */
@@ -239,7 +239,7 @@ public class Network extends Activity {
 	}
 
 	/**
-	 * Se ejecuta al pulsar el botón conectar
+	 * Se ejecuta al pulsar el boton conectar
 	 * 
 	 * @param view
 	 */
@@ -261,7 +261,7 @@ public class Network extends Activity {
 	}
 	
 	/**
-	 * Se ejecuta al pulsar el botón conectar
+	 * Se ejecuta al pulsar el boton conectar
 	 * 
 	 * @param view
 	 */
@@ -319,7 +319,7 @@ public class Network extends Activity {
 				
 			}
 		}
-		return "Conexión fallida";
+		return "Conexion fallida";
 
 	}
 
@@ -335,7 +335,7 @@ public class Network extends Activity {
 			String contentAsString="";
 			String tempString="";
 			URL url = new URL(myurl);
-			System.out.println("Abriendo conexión: " + url.getHost()
+			System.out.println("Abriendo conexion: " + url.getHost()
 					+ " puerto=" + url.getPort());
 			conn = (HttpURLConnection) url.openConnection();
 			conn.setReadTimeout(10000 /* milliseconds */);
@@ -366,7 +366,7 @@ public class Network extends Activity {
 			
 			return contentAsString;
 		} catch (IOException e) {
-			result = "Excepción: " + e.getMessage();
+			result = "Excepcion: " + e.getMessage();
 			System.out.println(result);
 
 			// Makes sure that the InputStream is closed after the app is
@@ -394,7 +394,7 @@ public class Network extends Activity {
 			String contentAsString="";
 			String tempString="";
 			URL url = new URL(myurl);
-			System.out.println("Abriendo conexión: " + url.getHost()
+			System.out.println("Abriendo conexion: " + url.getHost()
 					+ " puerto=" + url.getPort());
 			conn = (HttpURLConnection) url.openConnection();
 			conn.setReadTimeout(10000 /* milliseconds */);
@@ -433,7 +433,7 @@ public class Network extends Activity {
 			// contentAsString = readIt(is, len);
 			return contentAsString;
 		} catch (IOException e) {
-			result = "Excepción: " + e.getMessage();
+			result = e.getMessage();
 			System.out.println(result);
 
 			// Makes sure that the InputStream is closed after the app is

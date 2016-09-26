@@ -111,7 +111,7 @@ public class FragmentAlmacenamiento extends Fragment {
     }
 
     /**
-     * Graba en un fichero interno los datos leídos de
+     * Graba en un fichero interno los datos leidos de
      */
     public void save() {
         int value;

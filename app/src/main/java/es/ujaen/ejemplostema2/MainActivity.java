@@ -114,6 +114,16 @@ public class MainActivity extends AppCompatActivity
             }
             ft.commit();
         } else if (id == R.id.nav_layouts) {
+            FragmentTransaction ft = mFM.beginTransaction();
+            Fragment f = mFM.findFragmentById(R.id.contenedor);
+            Lista lista = new Lista();
+            if (f != null) {
+                ft.remove(f);
+                ft.replace(R.id.contenedor, lista);
+            } else {
+                ft.add(R.id.contenedor, lista, "lista");
+            }
+            ft.commit();
 
         } else if (id == R.id.nav_slideshow) {
 
