@@ -16,11 +16,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.menu.Car;
-import com.example.menu.NewListAdapter;
+import com.example.menu.CarListAdapter;
 
-import es.ujaen.ejemplostema2.R;
+public class FragmentoPanel extends Fragment {
 
-public class Panel extends Fragment {
+    TextView mPublicar = null;
+    ListView mLista=null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,10 +32,10 @@ public class Panel extends Fragment {
 
         setHasOptionsMenu(true);//Para comunicar que el panel quiere recibir los eventos de la barra de acci�n
 
-        ListView lista = (ListView) fragment.findViewById(R.id.listView1);
+        mLista = (ListView) fragment.findViewById(R.id.listView1);
+        mPublicar =(TextView) fragment.findViewById(R.id.panel_textView_centro);
 
-
-        //Inicializaci�n del adaptador
+        //Inicializacion del adaptador
         List<Car> cars = new ArrayList<Car>();
 
         Car c1 = new Car("SL500", "Mercedes", 500, 1);
@@ -46,19 +47,17 @@ public class Panel extends Fragment {
         cars.add(c3);
 
 
-        NewListAdapter nla = new NewListAdapter(this.getActivity(), cars);
+        CarListAdapter nla = new CarListAdapter(this.getActivity(), cars);
 
-        lista.setAdapter(nla);
+        mLista.setAdapter(nla);
 
         return fragment;
 
     }
 
     public void publica(CharSequence text) {
-
-        TextView t = (TextView) getActivity().findViewById(R.id.panel_textView_centro);
-        if (t != null) {
-            t.setText(text);
+        if (mPublicar != null) {
+            mPublicar.setText(text);
         }
     }
 

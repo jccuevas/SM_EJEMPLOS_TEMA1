@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import es.ujaen.ejemplostema2.Panel;
+import es.ujaen.ejemplostema2.FragmentoPanel;
 import es.ujaen.ejemplostema2.R;
 
 public class FragmentosDinamicos extends AppCompatActivity {
@@ -42,7 +42,7 @@ public class FragmentosDinamicos extends AppCompatActivity {
 
 		if (fragment == null) {
 
-			Panel panel = new Panel();
+			FragmentoPanel panel = new FragmentoPanel();
 			// Barra barra = new Barra();
 			ft.add(R.id.fragment_container, panel, TAG_PANEL);
 
@@ -71,7 +71,7 @@ public class FragmentosDinamicos extends AppCompatActivity {
 
 		if (fragment != null) {
 
-			Panel panel = new Panel();
+			FragmentoPanel panel = new FragmentoPanel();
 
 			ft.replace(R.id.fragment_container, panel);
 			ft.setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE);

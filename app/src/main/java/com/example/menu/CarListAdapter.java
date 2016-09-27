@@ -14,7 +14,7 @@ import es.ujaen.ejemplostema2.R;
 
 
 
-public class NewListAdapter extends BaseAdapter {
+public class CarListAdapter extends BaseAdapter {
 
 	private final Context context;
 	private List<Car> values;
@@ -24,7 +24,7 @@ public class NewListAdapter extends BaseAdapter {
 	public static final int ROW_BACKGORUND_ALPHA = 50;
 	public static final int ROW_SELECTED_ALPHA = 80;
 
-	public NewListAdapter(Context context,List<Car> values) {
+	public CarListAdapter(Context context, List<Car> values) {
 		super();
 		this.context = context;
 		this.values = values;

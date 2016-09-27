@@ -18,6 +18,8 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    public static final String FRAGMENTO_DETALLES = "detalles";
+
     FragmentManager mFM = null;
 
     @Override
@@ -36,12 +38,12 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 FragmentTransaction ft = mFM.beginTransaction();
                 FragmentInfo info = new FragmentInfo();
-                Fragment f = mFM.findFragmentById(R.id.contenedor);
+                Fragment f = mFM.findFragmentById(R.id.fragmento_lista);
                 if (f != null) {
                     ft.remove(f);
-                    ft.replace(R.id.contenedor, info);
+                    ft.replace(R.id.fragmento_lista, info);
                 } else {
-                    ft.add(R.id.contenedor, info, "INFO");
+                    ft.add(R.id.fragmento_lista, info, "INFO");
                 }
                 ft.commit();
 
@@ -104,25 +106,38 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_almacenamiento) {
 
             FragmentTransaction ft = mFM.beginTransaction();
-            Fragment f = mFM.findFragmentById(R.id.contenedor);
+            Fragment f = mFM.findFragmentById(R.id.fragmento_lista);
             FragmentAlmacenamiento almacenamiento = new FragmentAlmacenamiento();
             if (f != null) {
                 ft.remove(f);
-                ft.replace(R.id.contenedor, almacenamiento);
+                ft.replace(R.id.fragmento_lista, almacenamiento);
             } else {
-                ft.add(R.id.contenedor, almacenamiento, "almacenamiento");
+                ft.add(R.id.fragmento_lista, almacenamiento, "almacenamiento");
             }
             ft.commit();
         } else if (id == R.id.nav_layouts) {
             FragmentTransaction ft = mFM.beginTransaction();
-            Fragment f = mFM.findFragmentById(R.id.contenedor);
-            Lista lista = new Lista();
+            Fragment f = mFM.findFragmentById(R.id.fragmento_lista);
+            FragmentoLista lista = new FragmentoLista();
             if (f != null) {
                 ft.remove(f);
-                ft.replace(R.id.contenedor, lista);
+                ft.replace(R.id.fragmento_lista, lista);
             } else {
-                ft.add(R.id.contenedor, lista, "lista");
+                ft.add(R.id.fragmento_lista, lista, "lista");
             }
+
+
+            if (findViewById(R.id.fragmento_detalles) != null) {
+                FragmentoPanel panel = (FragmentoPanel) getSupportFragmentManager().findFragmentByTag(FRAGMENTO_DETALLES);
+                if (panel == null) {
+                    panel = new FragmentoPanel();
+                    ft.add(R.id.fragmento_detalles,panel,FRAGMENTO_DETALLES);
+                    ft.addToBackStack(FRAGMENTO_DETALLES);
+
+
+                }
+            }
+
             ft.commit();
 
         } else if (id == R.id.nav_slideshow) {

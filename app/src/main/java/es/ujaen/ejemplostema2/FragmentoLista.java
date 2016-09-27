@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 
-public class Lista extends ListFragment {
+public class FragmentoLista extends ListFragment {
 
     boolean mDualPane = true;
     int mCurCheckPosition = 0;
@@ -38,22 +38,22 @@ public class Lista extends ListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        if (getActivity().findViewById(R.id.panel) != null) {
-            Panel panel = (Panel) getFragmentManager().findFragmentById(R.id.panel);
+        if (getActivity().findViewById(R.id.fragmento_detalles) != null) {
+            FragmentoPanel panel = (FragmentoPanel) getFragmentManager().findFragmentById(R.id.fragmento_detalles);
             if (panel == null) {
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
-                panel = new Panel();
-                ft.add(panel, "panel");
-                ft.addToBackStack("panel");
+                panel = new FragmentoPanel();
+                ft.add(R.id.fragmento_detalles,panel,MainActivity.FRAGMENTO_DETALLES);
+                ft.addToBackStack(MainActivity.FRAGMENTO_DETALLES);
                 ft.commit();
 
             }
             panel.publica("Pulsado " + position);
         } else {
             FragmentTransaction ft = getFragmentManager().beginTransaction();
-            Panel panel = new Panel();
-            ft.add(panel, "panel");
-            ft.addToBackStack("panel");
+            FragmentoPanel panel = new FragmentoPanel();
+            ft.add(R.id.fragmento_lista,panel,MainActivity.FRAGMENTO_DETALLES);
+            ft.addToBackStack(MainActivity.FRAGMENTO_DETALLES);
             ft.commit();
             panel.publica("Pulsado " + position);
         }
