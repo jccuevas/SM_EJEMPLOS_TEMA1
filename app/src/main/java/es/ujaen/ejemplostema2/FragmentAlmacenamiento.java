@@ -15,7 +15,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +22,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.menu.Record;
-import com.example.menu.SQLiteTableRecords;
+import es.ujaen.ejemplostema2.utils.Record;
+import es.ujaen.ejemplostema2.utils.SQLiteTableRecords;
 
 
 public class FragmentAlmacenamiento extends Fragment {

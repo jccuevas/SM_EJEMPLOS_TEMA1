@@ -1,4 +1,4 @@
-package com.example.menu;
+package es.ujaen.ejemplostema2.data;
 
 import java.util.List;
 

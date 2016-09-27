@@ -1,4 +1,4 @@
-package com.example.menu;
+package es.ujaen.ejemplostema2.utils;
 
 import java.io.Serializable;
 

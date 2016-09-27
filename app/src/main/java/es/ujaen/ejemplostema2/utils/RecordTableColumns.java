@@ -1,4 +1,4 @@
-package com.example.menu;
+package es.ujaen.ejemplostema2.utils;
 
 public interface RecordTableColumns {
 	public static final String 	COLUMN_ID 		= "_id";

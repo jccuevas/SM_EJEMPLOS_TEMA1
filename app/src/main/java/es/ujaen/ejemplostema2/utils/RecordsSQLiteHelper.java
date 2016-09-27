@@ -1,4 +1,4 @@
-package com.example.menu;
+package es.ujaen.ejemplostema2.utils;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

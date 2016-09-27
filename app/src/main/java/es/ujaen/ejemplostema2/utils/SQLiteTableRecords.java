@@ -1,4 +1,4 @@
-package com.example.menu;
+package es.ujaen.ejemplostema2.utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +11,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.AsyncTask;
 import android.util.Log;
+
+import es.ujaen.ejemplostema2.utils.Record;
+import es.ujaen.ejemplostema2.utils.RecordsSQLiteHelper;
 
 public class SQLiteTableRecords {
 

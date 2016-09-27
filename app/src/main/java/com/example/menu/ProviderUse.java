@@ -21,6 +21,7 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 import es.ujaen.ejemplostema2.R;
+import es.ujaen.ejemplostema2.utils.RecordTableColumns;
 
 public class ProviderUse extends Activity implements OnKeyListener {
 

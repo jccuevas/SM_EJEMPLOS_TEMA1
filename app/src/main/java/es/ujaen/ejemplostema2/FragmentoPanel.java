@@ -15,8 +15,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.menu.Car;
-import com.example.menu.CarListAdapter;
+import es.ujaen.ejemplostema2.data.Car;
+import es.ujaen.ejemplostema2.data.CarListAdapter;
 
 public class FragmentoPanel extends Fragment {
 

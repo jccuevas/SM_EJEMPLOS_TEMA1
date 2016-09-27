@@ -8,7 +8,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
-public class RecordContentProvider extends ContentProvider implements RecordTableColumns{
+import es.ujaen.ejemplostema2.utils.RecordTableColumns;
+import es.ujaen.ejemplostema2.utils.RecordsSQLiteHelper;
+
+public class RecordContentProvider extends ContentProvider implements RecordTableColumns {
 
 	private static final String uri =
 		    "content://uja.epsl.aaptm.android.contentproviders/registros";
