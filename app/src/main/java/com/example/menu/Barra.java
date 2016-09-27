@@ -14,7 +14,7 @@ public class Barra extends Fragment {
 			Bundle savedInstanceState) {
 				
 		
-		return inflater.inflate(R.layout.layout_fragment_panel, null);
+		return inflater.inflate(R.layout.layout_fragment_barra, null);
 		
 	}
 	

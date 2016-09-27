@@ -28,7 +28,7 @@ public class FragmentoPanel extends Fragment {
                              Bundle savedInstanceState) {
 
 
-        View fragment = inflater.inflate(R.layout.layout_panel, null);
+        View fragment = inflater.inflate(R.layout.layout_fragment_panel, null);
 
         setHasOptionsMenu(true);//Para comunicar que el panel quiere recibir los eventos de la barra de acci�n
 

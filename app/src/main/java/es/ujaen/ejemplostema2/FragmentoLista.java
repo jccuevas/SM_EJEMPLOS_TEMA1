@@ -1,5 +1,6 @@
 package es.ujaen.ejemplostema2;
 
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ListFragment;
 
@@ -22,12 +23,14 @@ public class FragmentoLista extends ListFragment {
         // Populate list with our static array of titles.
         String[] values = new String[]{"uno", "dos"};
 
-
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1, values);
         setListAdapter(adapter);
 
+        registerForContextMenu(getListView());
     }
+
+
 
 
     @Override
@@ -35,6 +38,7 @@ public class FragmentoLista extends ListFragment {
         super.onSaveInstanceState(outState);
         outState.putInt("curChoice", mCurCheckPosition);
     }
+
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
@@ -46,12 +50,13 @@ public class FragmentoLista extends ListFragment {
                 ft.add(R.id.fragmento_detalles,panel,MainActivity.FRAGMENTO_DETALLES);
                 ft.addToBackStack(MainActivity.FRAGMENTO_DETALLES);
                 ft.commit();
-
             }
             panel.publica("Pulsado " + position);
         } else {
             FragmentTransaction ft = getFragmentManager().beginTransaction();
+            Fragment old=getFragmentManager().findFragmentById(R.id.fragmento_lista);
             FragmentoPanel panel = new FragmentoPanel();
+            ft.remove(old);
             ft.add(R.id.fragmento_lista,panel,MainActivity.FRAGMENTO_DETALLES);
             ft.addToBackStack(MainActivity.FRAGMENTO_DETALLES);
             ft.commit();

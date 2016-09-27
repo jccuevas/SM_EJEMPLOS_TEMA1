@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.ContextMenu;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,6 +20,8 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     public static final String FRAGMENTO_DETALLES = "detalles";
+
+    public static final int MENU_CONTEXTUAL_AYUDA = 1;
 
     FragmentManager mFM = null;
 
@@ -36,16 +39,7 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentTransaction ft = mFM.beginTransaction();
-                FragmentInfo info = new FragmentInfo();
-                Fragment f = mFM.findFragmentById(R.id.fragmento_lista);
-                if (f != null) {
-                    ft.remove(f);
-                    ft.replace(R.id.fragmento_lista, info);
-                } else {
-                    ft.add(R.id.fragmento_lista, info, "INFO");
-                }
-                ft.commit();
+                showHelpFragment();
 
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
@@ -55,13 +49,25 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
 
-
+    public void showHelpFragment() {
+        FragmentTransaction ft = mFM.beginTransaction();
+        FragmentInfo info = new FragmentInfo();
+        Fragment f = mFM.findFragmentById(R.id.fragmento_lista);
+        if (f != null) {
+            ft.remove(f);
+            ft.replace(R.id.fragmento_lista, info);
+        } else {
+            ft.add(R.id.fragmento_lista, info, "INFO");
+        }
+        ft.addToBackStack(null);
+        ft.commit();
     }
 
     @Override
@@ -78,7 +84,6 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-
         return true;
     }
 
@@ -89,12 +94,28 @@ public class MainActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.menu_help) {
+            showHelpFragment();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        menu.add(0, MENU_CONTEXTUAL_AYUDA, 0, R.string.menu_help);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case MENU_CONTEXTUAL_AYUDA:
+                showHelpFragment();
+                return true;
+        }
+        return super.onContextItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -131,7 +152,7 @@ public class MainActivity extends AppCompatActivity
                 FragmentoPanel panel = (FragmentoPanel) getSupportFragmentManager().findFragmentByTag(FRAGMENTO_DETALLES);
                 if (panel == null) {
                     panel = new FragmentoPanel();
-                    ft.add(R.id.fragmento_detalles,panel,FRAGMENTO_DETALLES);
+                    ft.add(R.id.fragmento_detalles, panel, FRAGMENTO_DETALLES);
                     ft.addToBackStack(FRAGMENTO_DETALLES);
 
 

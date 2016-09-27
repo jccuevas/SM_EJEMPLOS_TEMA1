@@ -78,7 +78,7 @@ public class Menus extends AppCompatActivity implements OnKeyListener {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.menu_main, menu);
+		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 

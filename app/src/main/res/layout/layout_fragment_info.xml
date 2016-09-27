@@ -9,7 +9,7 @@
         android:id="@+id/fragmentinfo_frame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#33b5e5"
+        android:background="@color/colorPrimary"
         android:padding="@dimen/activity_horizontal_margin"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
