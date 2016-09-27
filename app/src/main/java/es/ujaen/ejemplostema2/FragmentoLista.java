@@ -20,8 +20,8 @@ public class FragmentoLista extends ListFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        // Populate list with our static array of titles.
-        String[] values = new String[]{"uno", "dos"};
+        // Rellena la lista con estos valores
+        String[] values = new String[]{"uno", "dos","tres"};
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1, values);
@@ -51,7 +51,7 @@ public class FragmentoLista extends ListFragment {
                 ft.addToBackStack(MainActivity.FRAGMENTO_DETALLES);
                 ft.commit();
             }
-            panel.publica("Pulsado " + position);
+            panel.publica("Pulsado " + (position+1));
         } else {
             FragmentTransaction ft = getFragmentManager().beginTransaction();
             Fragment old=getFragmentManager().findFragmentById(R.id.fragmento_lista);

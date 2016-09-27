@@ -27,7 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import es.ujaen.ejemplostema2.FragmentAlmacenamiento;
-import es.ujaen.ejemplostema2.FragmentInfo;
+import es.ujaen.ejemplostema2.FragmentoInfo;
 import es.ujaen.ejemplostema2.R;
 
 public class Menus extends AppCompatActivity implements OnKeyListener {
@@ -46,7 +46,7 @@ public class Menus extends AppCompatActivity implements OnKeyListener {
 		Fragment f = mManager.findFragmentByTag(FRAGMENT_DETAILS);
 		if (f == null) {
 			FragmentTransaction ft = mManager.beginTransaction();
-			FragmentInfo finfo = new FragmentInfo();
+			FragmentoInfo finfo = new FragmentoInfo();
 			ft.add(R.id.fragment_mainmenu_description, finfo, FRAGMENT_DETAILS);
 			ft.commit();
 		}

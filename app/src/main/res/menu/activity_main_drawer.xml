@@ -10,7 +10,7 @@
             android:title="@string/navmenu_linearlayout" />
         <item
             android:id="@+id/nav_almacenamiento"
-            android:icon="@drawable/ic_action_storing"
+            android:icon="@drawable/ic_action_store"
             android:title="@string/navmenu_almacenamientot" />
         <item
             android:id="@+id/nav_slideshow"
@@ -29,9 +29,9 @@
                 android:icon="@drawable/ic_menu_share"
                 android:title="Share" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_about"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:title="@string/navmenu_about" />
         </menu>
     </item>
 

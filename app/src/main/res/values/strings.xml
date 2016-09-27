@@ -8,9 +8,9 @@
     <string name="navbar_serviciosmoviles">Servicios Móviles</string>
     <string name="navbar_title">Ejemplos Tema 2</string>
 
-    <string name="navmenu_linearlayout">Layouts</string>
+    <string name="navmenu_linearlayout">Layouts y fragmentos</string>
     <string name="navmenu_almacenamientot">Almacenamiento</string>
-
+    <string name="navmenu_about">Acerca de...</string>
 
 
     <!-- Antigua aplicación Menus-->
@@ -41,7 +41,7 @@
     <string name="menu_files">Grabar datos</string>
 
     <string name="help_title">Ayuda de la aplicación de ejemplos</string>
-	<string name="help_text">Esta es una aplicación para mostrar los ejemplos de clase de la asignatura Servicios Móviles del Grado de Ingeniería Telemática de la Universidad de Jaén</string>
+    <string name="help_text">Esta es una aplicación para mostrar los ejemplos de clase de la asignatura Servicios Móviles del Grado de Ingeniería Telemática de la Universidad de Jaén</string>
     <string name="help_uja">Universidad de Jaén</string>
 	<string name="help_ninepatch">El fondo del TextView del pie de la pantalla es un
 		nine patch, revísalo para comprobar como funcionan
@@ -127,4 +127,9 @@
 
     <string name="network_url_browse">Ir</string>
     <string name="contentdescription_logouja">Logo UJA</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_author">Juan Carlos Cuevas Martínez</string>
+    <string name="app_affiliaton">Dpto. Ingeniería de Telecomunicación\nUniversidad de Jaén</string>
 </resources>

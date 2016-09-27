@@ -30,7 +30,7 @@ public class FragmentoPanel extends Fragment {
 
         View fragment = inflater.inflate(R.layout.layout_fragment_panel, null);
 
-        setHasOptionsMenu(true);//Para comunicar que el panel quiere recibir los eventos de la barra de acci�n
+        setHasOptionsMenu(true);//Para comunicar que el panel quiere recibir los eventos de la barra de accion
 
         mLista = (ListView) fragment.findViewById(R.id.listView1);
         mPublicar =(TextView) fragment.findViewById(R.id.panel_textView_centro);

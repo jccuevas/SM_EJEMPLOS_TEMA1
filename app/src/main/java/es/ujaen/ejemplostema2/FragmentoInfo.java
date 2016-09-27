@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import es.ujaen.ejemplostema2.R;
 
-public class FragmentInfo extends Fragment {
+public class FragmentoInfo extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,

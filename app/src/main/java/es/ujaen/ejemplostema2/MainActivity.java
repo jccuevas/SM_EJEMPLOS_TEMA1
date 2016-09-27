@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity
 
     public void showHelpFragment() {
         FragmentTransaction ft = mFM.beginTransaction();
-        FragmentInfo info = new FragmentInfo();
+        FragmentoInfo info = new FragmentoInfo();
         Fragment f = mFM.findFragmentById(R.id.fragmento_lista);
         if (f != null) {
             ft.remove(f);
@@ -176,7 +176,9 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_about) {
+            FragmentoAcercade fragmentoAcercade = FragmentoAcercade.newInstance("uno","dos");
+            fragmentoAcercade.show(mFM,"acercade");
 
         }
 
