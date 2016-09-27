@@ -11,11 +11,11 @@
         <item
             android:id="@+id/nav_almacenamiento"
             android:icon="@drawable/ic_action_store"
-            android:title="@string/navmenu_almacenamientot" />
+            android:title="@string/navmenu_almacenamiento" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_fragmentosdinamicos"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="@string/navmenu_fragdinamicos" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"

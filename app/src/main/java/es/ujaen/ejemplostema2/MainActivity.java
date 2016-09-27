@@ -1,5 +1,6 @@
 package es.ujaen.ejemplostema2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.example.menu.Fragmentos;
+import com.example.menu.FragmentosDinamicos;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -170,7 +174,9 @@ public class MainActivity extends AppCompatActivity
 
             ft.commit();
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_fragmentosdinamicos) {
+            startActivity(new Intent(this,FragmentosDinamicos.class));
+
 
         } else if (id == R.id.nav_manage) {
 

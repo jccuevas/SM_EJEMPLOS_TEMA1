@@ -9,7 +9,8 @@
     <string name="navbar_title">Ejemplos Tema 2</string>
 
     <string name="navmenu_linearlayout">Layouts y fragmentos</string>
-    <string name="navmenu_almacenamientot">Almacenamiento</string>
+    <string name="navmenu_almacenamiento">Almacenamiento</string>
+    <string name="navmenu_fragdinamicos">Fragmentos dinámicos</string>
     <string name="navmenu_about">Acerca de...</string>
 
 
