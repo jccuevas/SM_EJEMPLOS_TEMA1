@@ -1,44 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragmentinfo_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
-        android:id="@+id/fragmentinfo_frame"
+    <TextView
+        android:id="@+id/fragmentinfo_title"
+        style="@style/Base.TextAppearance.AppCompat.Menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:padding="@dimen/activity_horizontal_margin"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary"
+        android:text="@string/app_help"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:paddingBottom="@dimen/fragment_vertical_margin"
+        android:paddingEnd="@dimen/fragment_horizontal_margin"
+        android:paddingLeft="@dimen/fragment_horizontal_margin"
+        android:paddingRight="@dimen/fragment_horizontal_margin"
+        android:paddingStart="@dimen/fragment_horizontal_margin"
+        android:paddingTop="@dimen/fragment_vertical_margin" />
 
-        <TextView
-            android:id="@+id/fragmentinfo_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/app_help"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            style="@style/Base.TextAppearance.AppCompat.Menu" />
-    </FrameLayout>
-
-    <ScrollView
-        android:id="@+id/fragmentinfo_scrollview"
+    <WebView
+        android:id="@+id/fragmentinfo_helptext"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="5dp"
-        android:layout_below="@+id/fragmentinfo_frame"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-        <TextView
-            android:id="@+id/fragmentinfo_helptext"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/help_text"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-    </ScrollView>
-
+        android:layout_below="@+id/fragmentinfo_title"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

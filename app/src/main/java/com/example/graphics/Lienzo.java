@@ -80,14 +80,14 @@ public class Lienzo extends View implements OnTouchListener, OnScrollListener {
 
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-		// if (bitmap != null) {
-		// widthMeasureSpec = bitmap.getWidth();
-		// heightMeasureSpec = bitmap.getHeight();
-		// } else {
-		// widthMeasureSpec = 40;
-		// heightMeasureSpec = 40;
-		//
-		// }
+		 if (bitmap != null) {
+		 widthMeasureSpec = bitmap.getWidth();
+		 heightMeasureSpec = bitmap.getHeight();
+		 } else {
+		 widthMeasureSpec = 40;
+		 heightMeasureSpec = 40;
+
+		 }
 		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 	}
 

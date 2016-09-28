@@ -61,7 +61,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/graficos_tween"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:gravity="center_horizontal" />
 
             <ImageView
                 android:id="@+id/imageViewTween"
@@ -96,7 +97,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/graficos_frame"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:gravity="center_horizontal" />
 
             <ImageView
                 android:id="@+id/imageViewFrame"
@@ -123,13 +125,6 @@
         android:layout_height="match_parent"
         android:contentDescription="@string/contentdescription_logoandroid" >
 
-        <com.example.graphics.Lienzo
-            android:id="@+id/custom_drawable_lienzo"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="8"
-            android:background="@drawable/paisaje" />
-
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -144,8 +139,7 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
                 android:text="@string/graphics_inset"
-                android:textAppearance="@style/blueSmall"
-                android:textSize="18sp" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <TextView
                 android:id="@+id/TextView02"
@@ -153,8 +147,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/graphics_clip"
-                android:textAppearance="@style/blueMed"
-                android:textSize="18sp" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <ImageView
                 android:id="@+id/imageView_logoandroid"
@@ -170,8 +163,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/graphics_scale"
-                android:textAppearance="@style/blueMed"
-                android:textSize="18sp" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <ImageView
                 android:id="@+id/ImageView_logoandroidscale"

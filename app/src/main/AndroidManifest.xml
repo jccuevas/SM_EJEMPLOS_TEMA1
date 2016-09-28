@@ -10,13 +10,9 @@
         android:theme="@style/AppTheme">
 
 
-        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
         <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-        <uses-permission android:name="android.permission.INTERNET"/>
-        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-        <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
-        <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
-        <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+
 
         <activity
             android:name=".MainActivity"
@@ -29,23 +25,22 @@
             </intent-filter>
         </activity>
 
-
-
-        <activity android:name="com.example.menu.Settings" android:label="@string/title_activity_menus" android:theme="@style/AppTheme"></activity>
-        <activity android:name="com.example.menu.Graficos" android:label="@string/app_graficos" android:theme="@style/AppTheme"></activity>
-        <activity android:name="com.example.menu.Help" android:label="@string/app_help" android:theme="@style/AppTheme"></activity>
-        <activity android:name="com.example.menu.Fragmentos" android:label="@string/app_fragments" android:theme="@style/AppTheme"></activity>
-        <activity android:name="com.example.menu.FragmentosDinamicos" android:label="@string/app_fragments_dinamicos" android:theme="@style/AppTheme"></activity>
-        <activity android:label="@string/app_networking" android:name="com.example.menu.Network" android:theme="@style/AppTheme"></activity>
-        <activity android:name="com.example.menu.Connectivity" android:label="@string/app_connectivity" android:theme="@style/AppTheme"></activity>
-        <activity android:name="com.example.menu.ProviderUse" android:label="@string/app_provideruse" android:theme="@style/AppTheme"></activity>
-
-
-        <service android:label="@string/service_download" android:name="com.example.menu.Download" ></service>
-
-        <provider android:name="com.example.menu.RecordContentProvider"
-            android:authorities="uja.epsl.aaptm.android.contentproviders" android:exported="true" android:enabled="true"/>
-
+        <activity
+            android:name="com.example.menu.Graficos"
+            android:label="@string/app_graficos"
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name="com.example.menu.Help"
+            android:label="@string/app_help"
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name="com.example.menu.Fragmentos"
+            android:label="@string/app_fragments"
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name="com.example.menu.FragmentosDinamicos"
+            android:label="@string/app_fragments_dinamicos"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

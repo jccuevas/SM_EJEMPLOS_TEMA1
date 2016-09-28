@@ -14,12 +14,12 @@
             android:title="@string/navmenu_almacenamiento" />
         <item
             android:id="@+id/nav_fragmentosdinamicos"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_menu_fragmentos"
             android:title="@string/navmenu_fragdinamicos" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_graficos"
+            android:icon="@drawable/ic_menu_graficos"
+            android:title="@string/navmenu_graficos" />
     </group>
 
     <item android:title="Communicate">

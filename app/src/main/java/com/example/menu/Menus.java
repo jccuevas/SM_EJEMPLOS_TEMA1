@@ -26,7 +26,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import es.ujaen.ejemplostema2.FragmentAlmacenamiento;
+import es.ujaen.ejemplostema2.FragmentoAlmacenamiento;
 import es.ujaen.ejemplostema2.FragmentoInfo;
 import es.ujaen.ejemplostema2.R;
 
@@ -92,9 +92,7 @@ public class Menus extends AppCompatActivity implements OnKeyListener {
 			startActivity(newactivity_help);
 			return true;
 		case R.id.menu_settings:
-			// Creamos una nueva Activity
-			Intent newactivity_settings = new Intent(this, Settings.class);
-			startActivity(newactivity_settings);
+
 			return true;
 		}
 
@@ -200,7 +198,7 @@ public class Menus extends AppCompatActivity implements OnKeyListener {
 					switch (position) {
 					case 0:
 						Intent newactivity_ficheros = new Intent(
-								getApplicationContext(), FragmentAlmacenamiento.class);
+								getApplicationContext(), FragmentoAlmacenamiento.class);
 						startActivity(newactivity_ficheros);
 						break;
 					case 1:
@@ -220,33 +218,14 @@ public class Menus extends AppCompatActivity implements OnKeyListener {
 						startActivity(newactivity);
 						break;
 					case 4:
-						Fragment f4 = mManager
-								.findFragmentByTag(FRAGMENT_DETAILS);
-						FragmentTransaction ft4 = mManager.beginTransaction();
-						FragmentMenuNetworking fn = new FragmentMenuNetworking();
-						ft4.remove(f4);
-						ft4.add(R.id.fragment_mainmenu_description, fn,
-								FRAGMENT_DETAILS);
-						ft4.commit();
-						// Intent newactivity_networking = new Intent(
-						// getApplicationContext(), Network.class);
-						// startActivity(newactivity_networking);
+
 						break;
 					case 5:
 
-						Fragment f5 = mManager
-								.findFragmentByTag(FRAGMENT_DETAILS);
-						FragmentTransaction ft5 = mManager.beginTransaction();
-						FragmentMenuConnectivity fc = new FragmentMenuConnectivity();
-						ft5.remove(f5);
-						ft5.add(R.id.fragment_mainmenu_description, fc,
-								FRAGMENT_DETAILS);
-						ft5.commit();
+
 						break;
 					case 6:
-						Intent newactivity_contentprovider = new Intent(
-								getApplicationContext(), ProviderUse.class);
-						startActivity(newactivity_contentprovider);
+
 						break;
 					default:
 						finish();

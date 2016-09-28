@@ -57,8 +57,8 @@ public class Graficos extends Activity {
 			}
 		});
 
-		Lienzo lienzo = (Lienzo) findViewById(R.id.custom_drawable_lienzo);
-		lienzo.setOnTouchListener(lienzo);
+//		Lienzo lienzo = (Lienzo) findViewById(R.id.custom_drawable_lienzo);
+//		lienzo.setOnTouchListener(lienzo);
 
 	}
 
