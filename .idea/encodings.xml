@@ -8,7 +8,7 @@
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/menu/NetworkWebFragment.java" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/menu/ProviderUse.java" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/example/menu/WiFiScanReceiver.java" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/es/ujaen/ejemplostema2/FragmentAlmacenamiento.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/es/ujaen/ejemplostema2/FragmentoAlmacenamiento.java" charset="ISO-8859-1" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

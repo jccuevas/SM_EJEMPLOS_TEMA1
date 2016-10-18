@@ -18,8 +18,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.menu.Fragmentos;
 import com.example.menu.FragmentosDinamicos;
+import com.example.menu.Graficos;
 
 import es.ujaen.ejemplostema2.utils.FragmentoAnimaciones;
 
@@ -41,6 +41,10 @@ public class MainActivity extends AppCompatActivity
 
 
         mFM = getSupportFragmentManager();
+
+
+        Fragment f = mFM.findFragmentById(R.id.fragmento_lista);
+        if (f == null) showHelpFragment();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -148,18 +152,20 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_almacenamiento) {
+        if (id == R.id.nav_almacenamiento) {//Opción mostrar fragmento de almacenamiento
 
+            //Se obtiene el fragmento que se esté mostrando actualemente
             FragmentTransaction ft = mFM.beginTransaction();
             Fragment f = mFM.findFragmentById(R.id.fragmento_lista);
-            FragmentAlmacenamiento almacenamiento = new FragmentAlmacenamiento();
-            if (f != null) {
+            FragmentoAlmacenamiento almacenamiento = new FragmentoAlmacenamiento();
+            if (f != null) {//Si ya hay un fragmento se elimina
                 ft.remove(f);
                 ft.replace(R.id.fragmento_lista, almacenamiento);
-            } else {
+            } else {//Si no hay fragmento, se añade simplemente
                 ft.add(R.id.fragmento_lista, almacenamiento, "almacenamiento");
             }
             ft.commit();
+
         } else if (id == R.id.nav_layouts) {
             FragmentTransaction ft = mFM.beginTransaction();
             Fragment f = mFM.findFragmentById(R.id.fragmento_lista);
@@ -178,8 +184,6 @@ public class MainActivity extends AppCompatActivity
                     panel = new FragmentoPanel();
                     ft.add(R.id.fragmento_detalles, panel, FRAGMENTO_DETALLES);
                     ft.addToBackStack(FRAGMENTO_DETALLES);
-
-
                 }
             }
 

@@ -26,7 +26,7 @@ import es.ujaen.ejemplostema2.utils.Record;
 import es.ujaen.ejemplostema2.utils.SQLiteTableRecords;
 
 
-public class FragmentAlmacenamiento extends Fragment {
+public class FragmentoAlmacenamiento extends Fragment {
 
     protected SQLiteTableRecords database = null;
     EditText mEdit_t = null;
@@ -55,7 +55,7 @@ public class FragmentAlmacenamiento extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        mFragmentView = inflater.inflate(R.layout.layout_ficheros, null);
+        mFragmentView = inflater.inflate(R.layout.layout_fragmento_almacenamiento, null);
 
         mEdit_t = (EditText) mFragmentView.findViewById(R.id.ficheros_editText_texto);
         mEdit_n = (EditText) mFragmentView.findViewById(R.id.ficheros_editText_value);

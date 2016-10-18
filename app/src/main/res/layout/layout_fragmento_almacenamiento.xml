@@ -28,7 +28,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/ficheros_textView_filename"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                        android:textAppearance="@android:style/TextAppearance.Material.Medium" />
 
                     <EditText
                         android:id="@+id/ficheros_editText_filename"
@@ -88,82 +88,98 @@
             </TableLayout>
 
             <TextView
-                android:id="@+id/row_car_brand"
-                android:layout_width="wrap_content"
+                android:text="@string/ficheros_tipo"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/ficheros_internal"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:id="@+id/textView"
+                android:textAppearance="@android:style/TextAppearance.Material.Headline" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/ficheros_store_internal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ficheros_internal"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_weight="1" />
 
                 <Button
                     android:id="@+id/ficheros_button_save"
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/button_save" />
+                    android:text="@string/button_save"
+                    />
 
                 <Button
                     android:id="@+id/ficheros_button_load"
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/ficheros_load" />
+                    android:text="@string/ficheros_load"
+                    />
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/fragmentinfo_helptext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ficheros_external"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/ficheros_store_external"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ficheros_external"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_weight="1" />
 
                 <Button
                     android:id="@+id/ficheros_button_save_ex"
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/ficheros_save" />
+                    android:text="@string/ficheros_save"
+                    />
 
                 <Button
                     android:id="@+id/ficheros_button_load_Ex"
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/ficheros_load" />
+                    android:text="@string/ficheros_load"
+                    />
 
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ficheros_database"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/ficheros_store_db"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ficheros_database"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_weight="1" />
 
                 <Button
                     android:id="@+id/ficheros_button_save_db"
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/ficheros_save" />
+                    android:text="@string/ficheros_save"
+                    />
 
                 <Button
                     android:id="@+id/ficheros_button_load_db"
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/ficheros_load" />
+                    android:text="@string/ficheros_load"
+                    />
             </LinearLayout>
 
             <TextView
@@ -172,7 +188,9 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/shape_uja"
                 android:text="@string/ficheros_result"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:textAppearance="@android:style/TextAppearance.Material.Medium.Inverse"
+                android:layout_marginTop="@dimen/fragment_vertical_margin"
+                android:padding="5dp"/>
         </LinearLayout>
     </ScrollView>
 </FrameLayout>
