@@ -12,7 +12,6 @@
     <string name="navmenu_linearlayout">Layouts y fragmentos</string>
     <string name="navmenu_almacenamiento">Almacenamiento</string>
     <string name="navmenu_fragdinamicos">Fragmentos dinámicos</string>
-    <string name="navmenu_graficos">Gráficos 2D</string>
     <string name="navmenu_about">Acerca de...</string>
     <string name="navmenu_audio">Reproducción de audio</string>
     <string name="navmenu_graficos">Ejemplos gráficos</string>
@@ -64,6 +63,7 @@
     <string name="ficheros_hint_texto">etiqueta del valor</string>
     <string name="ficheros_hint_filename">nombre del fichero</string>
     <string name="ficheros_numero">Valor</string>
+    <string name="ficheros_tipo">Tipo</string>
     <string name="ficheros_hint_valor">valor a guardar</string>
     <string name="fragment_lista_remove">Borrar panel</string>
     <string name="ficheros_textView_filename">Fichero</string>

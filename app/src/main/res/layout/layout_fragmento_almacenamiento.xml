@@ -27,8 +27,7 @@
                         android:id="@+id/ficheros_textView_fichero"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/ficheros_textView_filename"
-                        android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+                        android:text="@string/ficheros_textView_filename" />
 
                     <EditText
                         android:id="@+id/ficheros_editText_filename"
@@ -91,8 +90,7 @@
                 android:text="@string/ficheros_tipo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView"
-                android:textAppearance="@android:style/TextAppearance.Material.Headline" />
+                android:id="@+id/textView" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -100,7 +98,7 @@
 
                 <TextView
                     android:id="@+id/ficheros_store_internal"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/ficheros_internal"
                     android:textAppearance="?android:attr/textAppearanceMedium"
@@ -129,7 +127,7 @@
 
                 <TextView
                     android:id="@+id/ficheros_store_external"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/ficheros_external"
                     android:textAppearance="?android:attr/textAppearanceMedium"
@@ -148,8 +146,7 @@
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/ficheros_load"
-                    />
+                    android:text="@string/ficheros_load"/>
 
             </LinearLayout>
 
@@ -159,7 +156,7 @@
 
                 <TextView
                     android:id="@+id/ficheros_store_db"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/ficheros_database"
                     android:textAppearance="?android:attr/textAppearanceMedium"
@@ -170,16 +167,14 @@
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/ficheros_save"
-                    />
+                    android:text="@string/ficheros_save"/>
 
                 <Button
                     android:id="@+id/ficheros_button_load_db"
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/ficheros_load"
-                    />
+                    android:text="@string/ficheros_load"/>
             </LinearLayout>
 
             <TextView
@@ -188,7 +183,6 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/shape_uja"
                 android:text="@string/ficheros_result"
-                android:textAppearance="@android:style/TextAppearance.Material.Medium.Inverse"
                 android:layout_marginTop="@dimen/fragment_vertical_margin"
                 android:padding="5dp"/>
         </LinearLayout>
