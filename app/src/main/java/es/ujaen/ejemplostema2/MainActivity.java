@@ -21,6 +21,8 @@ import android.view.MenuItem;
 import com.example.menu.Fragmentos;
 import com.example.menu.FragmentosDinamicos;
 
+import es.ujaen.ejemplostema2.utils.FragmentoAnimaciones;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -75,6 +77,10 @@ public class MainActivity extends AppCompatActivity
         ft.commit();
     }
 
+    /**
+     * Se controla el evento de pulsación de la tecla de volver, haciendo que si está abierto el
+     * menú lateral se cierre, y si ya está cerrado se actúe por defecto
+     */
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -85,6 +91,12 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Ejemplo de creación de un submenú
+     *
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -131,7 +143,6 @@ public class MainActivity extends AppCompatActivity
         return super.onContextItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -175,16 +186,35 @@ public class MainActivity extends AppCompatActivity
             ft.commit();
 
         } else if (id == R.id.nav_fragmentosdinamicos) {
-            startActivity(new Intent(this,FragmentosDinamicos.class));
-
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
+            startActivity(new Intent(this, FragmentosDinamicos.class));
 
         } else if (id == R.id.nav_about) {
-            FragmentoAcercade fragmentoAcercade = FragmentoAcercade.newInstance("uno","dos");
-            fragmentoAcercade.show(mFM,"acercade");
+            FragmentoAcercade fragmentoAcercade = FragmentoAcercade.newInstance("uno", "dos");
+            fragmentoAcercade.show(mFM, "acercade");
+
+        }else if (id == R.id.nav_graficos) {
+            FragmentTransaction ft = mFM.beginTransaction();
+            Fragment f = mFM.findFragmentById(R.id.fragmento_lista);
+            FragmentoGraficos graficos = new FragmentoGraficos();
+            if (f != null) {
+                ft.remove(f);
+                ft.replace(R.id.fragmento_lista, graficos);
+            } else {
+                ft.add(R.id.fragmento_lista, graficos, "graficos");
+            }
+            ft.commit();
+
+        }else if (id == R.id.nav_animaciones) {
+            FragmentTransaction ft = mFM.beginTransaction();
+            Fragment f = mFM.findFragmentById(R.id.fragmento_lista);
+            FragmentoAnimaciones animaciones = new FragmentoAnimaciones();
+            if (f != null) {
+                ft.remove(f);
+                ft.replace(R.id.fragmento_lista, animaciones);
+            } else {
+                ft.add(R.id.fragmento_lista, animaciones, "animaciones");
+            }
+            ft.commit();
 
         }
 

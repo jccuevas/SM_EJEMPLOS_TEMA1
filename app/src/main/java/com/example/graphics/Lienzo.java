@@ -35,8 +35,6 @@ public class Lienzo extends View implements OnTouchListener, OnScrollListener {
 		{
 		initialize();
 		}
-
-		// TODO Auto-generated constructor stub
 	}
 
 	public Lienzo(Context context, AttributeSet attrs, int defStyle) {
@@ -121,14 +119,13 @@ public class Lienzo extends View implements OnTouchListener, OnScrollListener {
 		return false;
 	}
 
-	public void onScroll(AbsListView arg0, int arg1, int arg2, int arg3) {
-		// TODO Auto-generated method stub
-
-	}
-
+	@Override
 	public void onScrollStateChanged(AbsListView view, int scrollState) {
-		// TODO Auto-generated method stub
 
 	}
 
+	@Override
+	public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
+	}
 }

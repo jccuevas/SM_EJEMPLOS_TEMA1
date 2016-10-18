@@ -22,10 +22,10 @@ import android.widget.Toast;
  * se puede especificar android:exported "false"
  * 
  * IntentService es una clase que hereda de Service incorpora una hebra de trabajo
- * y no hace falta implementarla, tan solo implementar su m�todo onHandleIntent()
- * que recibir� el intent con los datos de la llamada. Este tipo de servicios
- * tan s�lo permite una llamada a la vez, si se necesita un servicio que soporte
- * m�ltiples llamadas simult�neas se debe crear a trav�s de la clase Service
+ * y no hace falta implementarla, tan solo implementar su metodo onHandleIntent()
+ * que recibira el intent con los datos de la llamada. Este tipo de servicios
+ * tan solo permite una llamada a la vez, si se necesita un servicio que soporte
+ * multiples llamadas simultaneas se debe crear a traves de la clase Service
  * @author Juan Carlos
  *
  */
@@ -59,7 +59,6 @@ public class Download extends Service {
 			task.execute(new URL(url));
 			
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -76,7 +75,6 @@ public class Download extends Service {
 	 */
 	@Override
 	public IBinder onBind(Intent arg0) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -86,7 +84,6 @@ public class Download extends Service {
 	 */
 	@Override
 	public void onCreate() {
-		// TODO Auto-generated method stub
 		super.onCreate();
 	}
 

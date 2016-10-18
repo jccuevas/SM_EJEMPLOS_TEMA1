@@ -24,14 +24,25 @@ public class CarListAdapter extends BaseAdapter {
 	public static final int ROW_BACKGORUND_ALPHA = 50;
 	public static final int ROW_SELECTED_ALPHA = 80;
 
+	/**
+	 * Constructor que permite la inicialización del adaptador
+	 * @param context Contexto de la aplicación
+	 * @param values Lista de objetos Car que formarán los datos de entrada
+     */
 	public CarListAdapter(Context context, List<Car> values) {
 		super();
 		this.context = context;
 		this.values = values;
-		
 
 	}
 
+    /**
+     * El método que permite generar la vista personalizada de un elemento de lista
+     * @param position Posición del elemento en la lista
+     * @param convertView La vieja vista para reusar
+     * @param parent La vista padre
+     * @return
+     */
 	@Override
 	public View getView(final int position, View convertView, ViewGroup parent) {
 		LayoutInflater inflater = (LayoutInflater) context

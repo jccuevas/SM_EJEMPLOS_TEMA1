@@ -115,14 +115,12 @@ public class ProviderUse extends Activity implements OnKeyListener {
 			Toast.makeText(this, "Elemento tocado: " + posTouched,
 					Toast.LENGTH_SHORT).show();
 			break;
-
 		}
 		return super.onContextItemSelected(item);
 	}
 
 	@Override
 	public void onContextMenuClosed(Menu menu) {
-		// TODO Auto-generated method stub
 		super.onContextMenuClosed(menu);
 	}
 
@@ -136,13 +134,11 @@ public class ProviderUse extends Activity implements OnKeyListener {
 
 	@Override
 	protected void onStop() {
-		// TODO Auto-generated method stub
 		super.onStop();
 	}
 
 	@Override
 	public boolean onKey(View arg0, int arg1, KeyEvent arg2) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

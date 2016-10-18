@@ -6,7 +6,7 @@
 
         <item
             android:id="@+id/nav_layouts"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_menu_fragmentos"
             android:title="@string/navmenu_linearlayout" />
         <item
             android:id="@+id/nav_almacenamiento"
@@ -17,9 +17,17 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/navmenu_fragdinamicos" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_animaciones"
+            android:icon="@drawable/ic_menu_imagen"
+            android:title="@string/navmenu_animaciones" />
+        <item
+            android:id="@+id/nav_graficos"
+            android:icon="@drawable/ic_menu_imagen"
+            android:title="@string/navmenu_graficos" />
+        <item
+            android:id="@+id/nav_audio"
+            android:icon="@drawable/ic_menu_music"
+            android:title="@string/navmenu_audio" />
     </group>
 
     <item android:title="Communicate">

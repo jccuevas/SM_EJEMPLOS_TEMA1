@@ -115,7 +115,6 @@ public class Menus extends AppCompatActivity implements OnKeyListener {
 
 	@Override
 	public void onContextMenuClosed(Menu menu) {
-		// TODO Auto-generated method stub
 		super.onContextMenuClosed(menu);
 	}
 
@@ -129,13 +128,11 @@ public class Menus extends AppCompatActivity implements OnKeyListener {
 
 	@Override
 	protected void onStop() {
-		// TODO Auto-generated method stub
 		super.onStop();
 	}
 
 	@Override
 	public boolean onKey(View arg0, int arg1, KeyEvent arg2) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
