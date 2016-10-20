@@ -1,7 +1,5 @@
 package com.example.menu;
 
-import com.example.graphics.Lienzo;
-
 import android.app.Activity;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.ClipDrawable;

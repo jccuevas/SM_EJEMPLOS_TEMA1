@@ -28,6 +28,8 @@ public class FragmentoLista extends ListFragment {
         setListAdapter(adapter);
 
         registerForContextMenu(getListView());
+
+
     }
 
 
