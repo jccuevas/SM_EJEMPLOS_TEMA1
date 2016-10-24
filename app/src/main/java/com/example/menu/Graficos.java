@@ -21,7 +21,7 @@ public class Graficos extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.layout_graficos);
+		setContentView(R.layout.layout_fragment_graphics);
 
 		logoandroid = (ImageView) findViewById(R.id.imageView_logoandroid);
 

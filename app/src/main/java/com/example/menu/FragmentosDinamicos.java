@@ -20,7 +20,7 @@ public class FragmentosDinamicos extends AppCompatActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.fragmentdynamic_layout);
+		setContentView(R.layout.layout_fragment_dynamic_);
 
 		mManager = getSupportFragmentManager();
 

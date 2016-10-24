@@ -55,7 +55,7 @@ public class FragmentoAlmacenamiento extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        mFragmentView = inflater.inflate(R.layout.layout_fragmento_almacenamiento, null);
+        mFragmentView = inflater.inflate(R.layout.layout_fragment_almacenamiento, null);
 
         mEdit_t = (EditText) mFragmentView.findViewById(R.id.ficheros_editText_texto);
         mEdit_n = (EditText) mFragmentView.findViewById(R.id.ficheros_editText_value);

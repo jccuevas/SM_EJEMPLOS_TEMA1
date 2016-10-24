@@ -1,8 +1,6 @@
-package es.ujaen.ejemplostema2.utils;
+package es.ujaen.ejemplostema2;
 
 import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.ClipDrawable;
-import android.graphics.drawable.ScaleDrawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,10 +13,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.example.graphics.Lienzo;
-
-import es.ujaen.ejemplostema2.R;
 
 public class FragmentoAnimaciones extends Fragment {
     private View mFragmentView = null;

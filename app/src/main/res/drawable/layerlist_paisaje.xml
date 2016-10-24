@@ -2,17 +2,17 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item>
-        <bitmap android:src="@drawable/cielo" />
+        <bitmap android:src="@drawable/ic_cielo" />
     </item>
     <item
         android:left="10dp"
         android:top="10dp">
-        <bitmap android:src="@drawable/nubes" />
+        <bitmap android:src="@drawable/ic_nubes" />
     </item>
     
-    <item>
-        
-        <bitmap android:src="@drawable/mountains" />
+    <item android:gravity="bottom">
+
+        <bitmap android:src="@drawable/ic_mountains" />
     </item>
 
 </layer-list>

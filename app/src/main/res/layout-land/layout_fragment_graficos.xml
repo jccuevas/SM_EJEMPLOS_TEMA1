@@ -120,18 +120,18 @@
         android:layout_height="match_parent"
         android:contentDescription="@string/contentdescription_logoandroid" >
 
-        <com.example.graphics.Lienzo
+        <es.ujaen.ejemplostema2.view.Lienzo
             android:id="@+id/custom_drawable_lienzo"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="8"
-            android:background="@drawable/paisaje" />
+            android:background="@drawable/layerlist_paisaje" />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            android:background="@drawable/insetcielo"
+            android:background="@drawable/inset_cielo"
             android:orientation="vertical" >
 
             <TextView

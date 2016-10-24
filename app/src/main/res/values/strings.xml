@@ -16,7 +16,7 @@
     <string name="navmenu_audio">Reproducción de audio</string>
     <string name="navmenu_graficos">Ejemplos gráficos</string>
     <string name="navmenu_animaciones">Animaciones de drawables</string>
-
+    <string name="navmenu_customview">View personalizado</string>
 
     <!-- Antigua aplicación Menus-->
     <string name="app_graficos">Ejemplos gráficos</string>
@@ -135,6 +135,11 @@
     <string name="network_url_browse">Ir</string>
     <string name="contentdescription_logouja">Logo UJA</string>
     <string name="main_welcome">Bienvenido a la aplicación de ejemplos del Tema 2</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fragment_audio_title">Reproducir audio</string>
+    <string name="fragment_audio_content_play">Botón reproducir</string>
 
 
 </resources>

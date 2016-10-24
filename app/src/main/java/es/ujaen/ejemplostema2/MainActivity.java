@@ -19,9 +19,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.menu.FragmentosDinamicos;
-import com.example.menu.Graficos;
-
-import es.ujaen.ejemplostema2.utils.FragmentoAnimaciones;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -205,6 +202,18 @@ public class MainActivity extends AppCompatActivity
                 ft.replace(R.id.fragmento_lista, graficos);
             } else {
                 ft.add(R.id.fragmento_lista, graficos, "graficos");
+            }
+            ft.commit();
+
+        }else if (id == R.id.nav_customview) {
+            FragmentTransaction ft = mFM.beginTransaction();
+            Fragment f = mFM.findFragmentById(R.id.fragmento_lista);
+            FragmentoCustomView customView = new FragmentoCustomView();
+            if (f != null) {
+                ft.remove(f);
+                ft.replace(R.id.fragmento_lista, customView);
+            } else {
+                ft.add(R.id.fragmento_lista, customView, "customView");
             }
             ft.commit();
 

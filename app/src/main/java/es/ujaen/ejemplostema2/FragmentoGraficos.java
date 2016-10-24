@@ -16,8 +16,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.graphics.Lienzo;
-
 public class FragmentoGraficos extends Fragment {
     private View mFragmentView = null;
 	private ImageView logoandroid = null;
@@ -35,7 +33,7 @@ public class FragmentoGraficos extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
-        mFragmentView= inflater.inflate(R.layout.layout_graficos, container, false);
+        mFragmentView= inflater.inflate(R.layout.layout_fragment_graphics, container, false);
 
 
 		logoandroid = (ImageView) mFragmentView.findViewById(R.id.imageView_logoandroid);
@@ -70,31 +68,6 @@ public class FragmentoGraficos extends Fragment {
 			}
 		});
 
-		Lienzo lienzo = (Lienzo) mFragmentView.findViewById(R.id.custom_drawable_lienzo);
-		lienzo.setOnTouchListener(lienzo);
-
-        Button tween = (Button)mFragmentView.findViewById(R.id.graficos_button_tween);
-        tween.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onTween();
-            }
-        });
-
-        Button transition = (Button)mFragmentView.findViewById(R.id.graficos_button_transiton);
-        transition.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onTransition();
-            }
-        });
-        Button frame = (Button)mFragmentView.findViewById(R.id.graficos_button_frameAnimation);
-        frame.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onFrame();
-            }
-        });
 
         return  mFragmentView;
 	}
