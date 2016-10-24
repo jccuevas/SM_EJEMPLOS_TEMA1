@@ -13,6 +13,7 @@
     android:paddingTop="@dimen/fragment_vertical_margin">
 
     <!-- TODO: Update blank fragment layout -->
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,7 +29,39 @@
         app:srcCompat="@drawable/ic_play_circle"
         android:id="@+id/fragment_audio_play1"
         android:contentDescription="@string/fragment_audio_content_play"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/fragment_audio_title"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_play_circle"
+        android:id="@+id/fragment_audio_play2"
+        android:contentDescription="@string/fragment_audio_content_play"
+        android:layout_below="@+id/fragment_audio_play1"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="@string/fragment_audio_play2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fragment_audio_label_play2"
+        android:textAppearance="@style/blueMed"
+        android:layout_alignBottom="@+id/fragment_audio_play2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="@string/fragment_audio_play1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fragment_audio_label_play1"
+        android:textAppearance="@style/blueMed"
+        android:layout_above="@+id/fragment_audio_play2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="12dp" />
 
 </RelativeLayout>

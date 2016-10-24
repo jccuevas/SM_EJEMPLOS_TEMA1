@@ -1,8 +1,11 @@
 package es.ujaen.ejemplostema2;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -17,12 +20,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.menu.FragmentosDinamicos;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE
+    };
     public static final String FRAGMENTO_DETALLES = "detalles";
 
     public static final int MENU_CONTEXTUAL_AYUDA = 1;
@@ -193,7 +202,7 @@ public class MainActivity extends AppCompatActivity
             FragmentoAcercade fragmentoAcercade = FragmentoAcercade.newInstance("uno", "dos");
             fragmentoAcercade.show(mFM, "acercade");
 
-        }else if (id == R.id.nav_graficos) {
+        } else if (id == R.id.nav_graficos) {
             FragmentTransaction ft = mFM.beginTransaction();
             Fragment f = mFM.findFragmentById(R.id.fragmento_lista);
             FragmentoGraficos graficos = new FragmentoGraficos();
@@ -205,7 +214,7 @@ public class MainActivity extends AppCompatActivity
             }
             ft.commit();
 
-        }else if (id == R.id.nav_customview) {
+        } else if (id == R.id.nav_customview) {
             FragmentTransaction ft = mFM.beginTransaction();
             Fragment f = mFM.findFragmentById(R.id.fragmento_lista);
             FragmentoCustomView customView = new FragmentoCustomView();
@@ -217,7 +226,7 @@ public class MainActivity extends AppCompatActivity
             }
             ft.commit();
 
-        }else if (id == R.id.nav_animaciones) {
+        } else if (id == R.id.nav_animaciones) {
             FragmentTransaction ft = mFM.beginTransaction();
             Fragment f = mFM.findFragmentById(R.id.fragmento_lista);
             FragmentoAnimaciones animaciones = new FragmentoAnimaciones();
@@ -229,10 +238,57 @@ public class MainActivity extends AppCompatActivity
             }
             ft.commit();
 
+        } else if (id == R.id.nav_audio) {
+
+            // Check if we have read permission
+            int permission = ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
+
+            if (permission != PackageManager.PERMISSION_GRANTED) {
+                // We don't have permission so prompt the user
+                ActivityCompat.requestPermissions(
+                        this,
+                        PERMISSIONS_STORAGE,
+                        REQUEST_EXTERNAL_STORAGE
+                );
+            }
+
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_EXTERNAL_STORAGE: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    FragmentTransaction ft = mFM.beginTransaction();
+                    Fragment f = mFM.findFragmentById(R.id.fragmento_lista);
+                    FragmentoAudio audio = new FragmentoAudio();
+                    if (f != null) {
+                        ft.remove(f);
+                        ft.replace(R.id.fragmento_lista, audio);
+                    } else {
+                        ft.add(R.id.fragmento_lista, audio, "audio");
+                    }
+                    ft.commit();
+
+                } else {
+
+                    Toast.makeText(this, "EL ejemplo de audio necesita del permiso para leer", Toast.LENGTH_LONG).show();
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
     }
 }
