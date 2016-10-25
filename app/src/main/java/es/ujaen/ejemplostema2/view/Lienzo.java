@@ -135,7 +135,7 @@ public class Lienzo extends View implements OnGestureListener {
             paint.setTextSize(40);
 
             canvas.drawText(texto, (int) (x - w / 2), (int) (y - h / 2), paint);
-            paint.setMaskFilter(new BlurMaskFilter(8, BlurMaskFilter.Blur.NORMAL));
+            //paint.setMaskFilter(new BlurMaskFilter(8, BlurMaskFilter.Blur.NORMAL));
             canvas.drawBitmap(mBitmap, src, dst, paint);
 
         } else {

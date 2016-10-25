@@ -3,12 +3,14 @@ package es.ujaen.ejemplostema2;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.view.ContextMenu;
 import android.view.SubMenu;
 import android.view.View;
@@ -239,19 +241,37 @@ public class MainActivity extends AppCompatActivity
             ft.commit();
 
         } else if (id == R.id.nav_audio) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
-            // Check if we have read permission
-            int permission = ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
+                if (ContextCompat.checkSelfPermission(this,
+                        Manifest.permission.READ_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED) {
 
-            if (permission != PackageManager.PERMISSION_GRANTED) {
-                // We don't have permission so prompt the user
-                ActivityCompat.requestPermissions(
-                        this,
-                        PERMISSIONS_STORAGE,
-                        REQUEST_EXTERNAL_STORAGE
-                );
+                    // Should we show an explanation?
+                    if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                            Manifest.permission.READ_EXTERNAL_STORAGE)) {
+
+                        // Show an expanation to the user *asynchronously* -- don't block
+                        // this thread waiting for the user's response! After the user
+                        // sees the explanation, try again to request the permission.
+
+                    } else {
+
+                        // No explanation needed, we can request the permission.
+
+                        ActivityCompat.requestPermissions(this,
+                                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                                REQUEST_EXTERNAL_STORAGE);
+
+                        // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                        // app-defined int constant. The callback method gets the
+                        // result of the request.
+                    }
+                }
+
+            }else {
+                showAudioFragment();
             }
-
 
         }
 
@@ -260,6 +280,18 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    protected void showAudioFragment(){
+        FragmentTransaction ft = mFM.beginTransaction();
+        Fragment f = mFM.findFragmentById(R.id.fragmento_lista);
+        FragmentoAudio audio = new FragmentoAudio();
+        if (f != null) {
+            ft.remove(f);
+            ft.replace(R.id.fragmento_lista, audio);
+        } else {
+            ft.add(R.id.fragmento_lista, audio, "audio");
+        }
+        ft.commit();
+    }
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {
@@ -269,20 +301,11 @@ public class MainActivity extends AppCompatActivity
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-                    FragmentTransaction ft = mFM.beginTransaction();
-                    Fragment f = mFM.findFragmentById(R.id.fragmento_lista);
-                    FragmentoAudio audio = new FragmentoAudio();
-                    if (f != null) {
-                        ft.remove(f);
-                        ft.replace(R.id.fragmento_lista, audio);
-                    } else {
-                        ft.add(R.id.fragmento_lista, audio, "audio");
-                    }
-                    ft.commit();
+                   showAudioFragment();
 
                 } else {
-
-                    Toast.makeText(this, "EL ejemplo de audio necesita del permiso para leer", Toast.LENGTH_LONG).show();
+                    showAudioFragment();
+                    Toast.makeText(this, "El ejemplo de audio necesita del permiso para leer", Toast.LENGTH_LONG).show();
                 }
                 return;
             }

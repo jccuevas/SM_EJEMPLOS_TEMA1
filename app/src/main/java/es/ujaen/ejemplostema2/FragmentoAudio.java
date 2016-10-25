@@ -30,8 +30,6 @@ public class FragmentoAudio extends Fragment {
     MediaPlayer mMPlayer = null;
 
 
-
-
     public FragmentoAudio() {
         // Required empty public constructor
     }
@@ -63,18 +61,8 @@ public class FragmentoAudio extends Fragment {
                                      @Override
                                      public void onClick(View v) {
 
-/**
- * Checks if the app has permission to write to device storage
- *
- * If the app does not has permission then the user will be prompted to grant permissions
- *
- * @param activity
- */
-
-
-
                                          File music = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC);
-                                         String path = music.getPath()+"/"+"invierno.mp3";
+                                         String path = music.getPath() + "/" + "invierno.mp3";
 
                                          if (mMPlayer != null) {
 
@@ -92,28 +80,21 @@ public class FragmentoAudio extends Fragment {
                                          } catch (IOException e) {
                                              e.printStackTrace();
                                          }
-
-
                                      }
                                  }
-
         );
         return mFragment;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-
         super.onActivityCreated(savedInstanceState);
-
-
     }
 
 
-
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onResume() {
+        super.onResume();
         mMPlayer = MediaPlayer.create(getContext(), R.raw.audio_vivaldi);
     }
 
