@@ -248,79 +248,11 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_audio) {
 
+            Intent music = new Intent(this,MusicActivity.class);
+            startActivity(music);
 
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//                int hasWriteContactsPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
-//                if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED) {
-//                    if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-//                            Manifest.permission.READ_EXTERNAL_STORAGE)) {
-//                        Snackbar.make(mLayout, R.string.fragment_audio_permission,
-//                                Snackbar.LENGTH_INDEFINITE)
-//                                .setAction(android.R.string.ok, new View.OnClickListener() {
-//                                    @Override
-//                                    public void onClick(View view) {
-//                                        ActivityCompat.requestPermissions(MainActivity.this,
-//                                                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-//                                                REQUEST_EXTERNAL_STORAGE);
-//                                    }
-//                                })
-//                                .show();
-//                    } else {
-//                        ActivityCompat.requestPermissions(this,
-//                                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-//                                REQUEST_EXTERNAL_STORAGE);
-//                    }
-//
-//                } else {
-//                    showAudioFragment();
-//                }
-//            }else
-                showAudioFragment();
+              //  showAudioFragment();
 
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//
-//                if (ContextCompat.checkSelfPermission(this,
-//                        Manifest.permission.READ_EXTERNAL_STORAGE)
-//                        != PackageManager.PERMISSION_GRANTED) {
-//
-//                    // Should we show an explanation?
-//                    if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-//                            Manifest.permission.READ_EXTERNAL_STORAGE)) {
-//
-//                        // Show an expanation to the user *asynchronously* -- don't block
-//                        // this thread waiting for the user's response! After the user
-//                        // sees the explanation, try again to request the permission.
-//                        Log.i("Audio","Petición de permisos para el contenido externo.");
-//                        Snackbar.make(mLayout, R.string.fragment_audio_permission,
-//                                Snackbar.LENGTH_INDEFINITE)
-//                                .setAction(android.R.string.ok, new View.OnClickListener() {
-//                                    @Override
-//                                    public void onClick(View view) {
-//                                        ActivityCompat.requestPermissions(MainActivity.this,
-//                                                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-//                                                REQUEST_EXTERNAL_STORAGE);
-//                                    }
-//                                })
-//                                .show();
-//
-//
-//                    } else {
-//
-//                        // No explanation needed, we can request the permission.
-//
-//                        ActivityCompat.requestPermissions(this,
-//                                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-//                                REQUEST_EXTERNAL_STORAGE);
-//
-//                        // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-//                        // app-defined int constant. The callback method gets the
-//                        // result of the request.
-//                    }
-//                }
-//
-//            }else {
-//                showAudioFragment();
-//            }
 
         }
 

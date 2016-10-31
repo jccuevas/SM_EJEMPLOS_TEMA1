@@ -27,6 +27,7 @@
     <string name="app_networking">Networking</string>
     <string name="app_connectivity">Conectividad</string>
     <string name="app_provideruse">Uso de un Proveedor de Contenido</string>
+    <string name="app_music_activity">Reproducción de música</string>
 
     <string name="title_activity_menus">Menus</string>
 
@@ -136,7 +137,14 @@
     <string name="contentdescription_logouja">Logo UJA</string>
     <string name="main_welcome">Bienvenido a la aplicación de ejemplos del Tema 2</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="externalstorage_error">No ha memoria externa</string>
+    <string name="no_action">Aún no hay nada aquí</string>
+    <string name="permission_readexternal">Se necesitan permisos para leer del almacenamiento externo para acceder a la música</string>
+    <string name="permission_readexternal_denied">No se reproducirá música</string>
+    <string name="music_label_resource">Recurso raw mp3</string>
+    <string name="music_label_external">Reproducción desde archivo externo</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="fragment_audio_title">Reproducir audio</string>
     <string name="fragment_audio_content_play">Botón reproducir</string>
