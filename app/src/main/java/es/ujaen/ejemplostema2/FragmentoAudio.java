@@ -8,8 +8,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.test.RenamingDelegatingContext;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -98,6 +100,34 @@ public class FragmentoAudio extends Fragment {
         mMPlayer = MediaPlayer.create(getContext(), R.raw.audio_vivaldi);
     }
 
+    private void permisos(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            int hasWriteContactsPermission = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE);
+            if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
+                        Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                    Snackbar.make(mFragment, R.string.fragment_audio_permission,
+                            Snackbar.LENGTH_INDEFINITE)
+                            .setAction(android.R.string.ok, new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    ActivityCompat.requestPermissions(getActivity(),
+                                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                                            MainActivity.REQUEST_EXTERNAL_STORAGE);
+                                }
+                            })
+                            .show();
+                } else {
+                    ActivityCompat.requestPermissions(getActivity(),
+                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                            MainActivity.REQUEST_EXTERNAL_STORAGE);
+                }
+            }
+        }
+
+
+    }
+
     @Override
     public void onPause() {
         super.onPause();
@@ -113,11 +143,7 @@ public class FragmentoAudio extends Fragment {
         String state = Environment.getExternalStorageState();
         if (Environment.MEDIA_MOUNTED.equals(state)) {
             return true;
-        } else if (Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
-            return true;
-        } else {
-            return false;
-        }
+        } else return Environment.MEDIA_MOUNTED_READ_ONLY.equals(state);
 
     }
 

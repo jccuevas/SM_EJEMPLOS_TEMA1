@@ -142,6 +142,7 @@
     <string name="fragment_audio_content_play">Botón reproducir</string>
     <string name="fragment_audio_play1">El otoño - <i>Vivaldi</i></string>
     <string name="fragment_audio_play2">El invierno - <i>Vivaldi</i></string>
+    <string name="fragment_audio_permission">El fragmento necesita permisos para acceder al almacenamiento externo para leer una canción</string>
 
 
 </resources>

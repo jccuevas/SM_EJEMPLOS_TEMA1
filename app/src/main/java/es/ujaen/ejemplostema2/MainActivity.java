@@ -1,16 +1,19 @@
 package es.ujaen.ejemplostema2;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.SubMenu;
 import android.view.View;
@@ -30,8 +33,8 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
-    private static final int REQUEST_EXTERNAL_STORAGE = 1;
-    private static String[] PERMISSIONS_STORAGE = {
+    public static final int REQUEST_EXTERNAL_STORAGE = 1;
+    public static String[] PERMISSIONS_STORAGE = {
             Manifest.permission.READ_EXTERNAL_STORAGE
     };
     public static final String FRAGMENTO_DETALLES = "detalles";
@@ -39,11 +42,14 @@ public class MainActivity extends AppCompatActivity
     public static final int MENU_CONTEXTUAL_AYUDA = 1;
 
     FragmentManager mFM = null;
+    private View mLayout=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mLayout = findViewById(R.id.content_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -241,37 +247,80 @@ public class MainActivity extends AppCompatActivity
             ft.commit();
 
         } else if (id == R.id.nav_audio) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
-                if (ContextCompat.checkSelfPermission(this,
-                        Manifest.permission.READ_EXTERNAL_STORAGE)
-                        != PackageManager.PERMISSION_GRANTED) {
 
-                    // Should we show an explanation?
-                    if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                            Manifest.permission.READ_EXTERNAL_STORAGE)) {
-
-                        // Show an expanation to the user *asynchronously* -- don't block
-                        // this thread waiting for the user's response! After the user
-                        // sees the explanation, try again to request the permission.
-
-                    } else {
-
-                        // No explanation needed, we can request the permission.
-
-                        ActivityCompat.requestPermissions(this,
-                                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                                REQUEST_EXTERNAL_STORAGE);
-
-                        // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-                        // app-defined int constant. The callback method gets the
-                        // result of the request.
-                    }
-                }
-
-            }else {
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                int hasWriteContactsPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
+//                if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED) {
+//                    if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+//                            Manifest.permission.READ_EXTERNAL_STORAGE)) {
+//                        Snackbar.make(mLayout, R.string.fragment_audio_permission,
+//                                Snackbar.LENGTH_INDEFINITE)
+//                                .setAction(android.R.string.ok, new View.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(View view) {
+//                                        ActivityCompat.requestPermissions(MainActivity.this,
+//                                                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+//                                                REQUEST_EXTERNAL_STORAGE);
+//                                    }
+//                                })
+//                                .show();
+//                    } else {
+//                        ActivityCompat.requestPermissions(this,
+//                                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+//                                REQUEST_EXTERNAL_STORAGE);
+//                    }
+//
+//                } else {
+//                    showAudioFragment();
+//                }
+//            }else
                 showAudioFragment();
-            }
+
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//
+//                if (ContextCompat.checkSelfPermission(this,
+//                        Manifest.permission.READ_EXTERNAL_STORAGE)
+//                        != PackageManager.PERMISSION_GRANTED) {
+//
+//                    // Should we show an explanation?
+//                    if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+//                            Manifest.permission.READ_EXTERNAL_STORAGE)) {
+//
+//                        // Show an expanation to the user *asynchronously* -- don't block
+//                        // this thread waiting for the user's response! After the user
+//                        // sees the explanation, try again to request the permission.
+//                        Log.i("Audio","Petición de permisos para el contenido externo.");
+//                        Snackbar.make(mLayout, R.string.fragment_audio_permission,
+//                                Snackbar.LENGTH_INDEFINITE)
+//                                .setAction(android.R.string.ok, new View.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(View view) {
+//                                        ActivityCompat.requestPermissions(MainActivity.this,
+//                                                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+//                                                REQUEST_EXTERNAL_STORAGE);
+//                                    }
+//                                })
+//                                .show();
+//
+//
+//                    } else {
+//
+//                        // No explanation needed, we can request the permission.
+//
+//                        ActivityCompat.requestPermissions(this,
+//                                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+//                                REQUEST_EXTERNAL_STORAGE);
+//
+//                        // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+//                        // app-defined int constant. The callback method gets the
+//                        // result of the request.
+//                    }
+//                }
+//
+//            }else {
+//                showAudioFragment();
+//            }
 
         }
 
