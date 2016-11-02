@@ -151,6 +151,8 @@
     <string name="fragment_audio_play1">El otoño - <i>Vivaldi</i></string>
     <string name="fragment_audio_play2">El invierno - <i>Vivaldi</i></string>
     <string name="fragment_audio_permission">El fragmento necesita permisos para acceder al almacenamiento externo para leer una canción</string>
-
+    <string name="music_activity_footer">En esta actividad se muestran ejemplos de reproducción de audio, acceso a permisos peligrosos y comprobación de acceso a memorias externas</string>
+    <string name="music_activity_title">Reproducción de audio</string>
+    <string name="contentdescription_music_play">Botón de reproducción</string>
 
 </resources>

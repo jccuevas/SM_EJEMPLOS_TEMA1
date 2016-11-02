@@ -212,6 +212,7 @@ public class Menus extends AppCompatActivity implements OnKeyListener {
 					case 3:
 						Intent newactivity = new Intent(
 								getApplicationContext(), Graficos.class);
+
 						startActivity(newactivity);
 						break;
 					case 4:

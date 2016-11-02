@@ -11,6 +11,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -134,8 +135,16 @@ public class MusicActivity extends AppCompatActivity {
 
     protected void playMusic() {
         if (mMPlayerEx != null) {
-            if (mMPlayerEx.isPlaying()) {
-                mMPlayerEx.stop();
+            try {
+                if (mMPlayerEx.isPlaying()) {
+                    mMPlayerEx.stop();
+
+                }
+                mMPlayerEx.release();
+            } catch (IllegalStateException ex) {
+                Log.d("MusicActivity", "IllegalStateException");
+            } finally {
+                mPlayExternal.setImageDrawable(ContextCompat.getDrawable(MusicActivity.this, android.R.drawable.ic_media_play));
             }
         }
 
@@ -148,35 +157,50 @@ public class MusicActivity extends AppCompatActivity {
                 mMPlayer.start();
                 mPlayRaw.setImageDrawable(ContextCompat.getDrawable(MusicActivity.this, android.R.drawable.ic_media_pause));
             }
+
     }
 
     protected void playMusicExternal(String path) {
-
-
-        if (mMPlayer != null && audioSessionIdRaw != 0) {
-            if (mMPlayer.isPlaying())
-                mMPlayer.stop();
-
+        try {
+            if (mMPlayer != null) {
+                if (mMPlayer.isPlaying()) {
+                    mMPlayer.stop();
+                }
+                mMPlayer.release();
+            }
+        } catch (IllegalStateException ex) {
+            Log.d("MusicActivity", "IllegalStateException");
+        } finally {
+            mPlayRaw.setImageDrawable(ContextCompat.getDrawable(MusicActivity.this, android.R.drawable.ic_media_play));
         }
 
-        if (mMPlayerEx != null) {
-            if (mMPlayerEx.isPlaying()) {
-                mMPlayerEx.pause();
-                mPlayExternal.setImageDrawable(ContextCompat.getDrawable(MusicActivity.this, android.R.drawable.ic_media_play));
-            } else {
 
-                mMPlayerEx.start();
-                mPlayExternal.setImageDrawable(ContextCompat.getDrawable(MusicActivity.this, android.R.drawable.ic_media_pause));
-            }
 
+    if(mMPlayerEx!=null)
+
+    {
+        if (mMPlayerEx.isPlaying()) {
+            mMPlayerEx.pause();
+            mPlayExternal.setImageDrawable(ContextCompat.getDrawable(MusicActivity.this, android.R.drawable.ic_media_play));
         } else {
-            try {
-                iniExternalAudio(path);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+
+            mMPlayerEx.start();
+            mPlayExternal.setImageDrawable(ContextCompat.getDrawable(MusicActivity.this, android.R.drawable.ic_media_pause));
+        }
+
+    }
+
+    else
+
+    {
+        try {
+            iniExternalAudio(path);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
+
+}
 
     private void iniExternalAudio(String path) throws IOException {
         mMPlayerEx = new MediaPlayer();
@@ -191,18 +215,22 @@ public class MusicActivity extends AppCompatActivity {
         super.onResume();
 
         mMPlayer = MediaPlayer.create(MusicActivity.this, R.raw.audio_vivaldi);
-        mMPlayerEx = new MediaPlayer();
+        mMPlayerEx = null;
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        if (mMPlayer.isPlaying())
-            mMPlayer.stop();
-        mMPlayer.release();
-        if (mMPlayerEx.isPlaying())
-            mMPlayerEx.stop();
-        mMPlayerEx.release();
+        if (mMPlayerEx != null) {
+            if (mMPlayer.isPlaying())
+                mMPlayer.stop();
+            mMPlayer.release();
+        }
+        if (mMPlayerEx != null) {
+            if (mMPlayerEx.isPlaying())
+                mMPlayerEx.stop();
+            mMPlayerEx.release();
+        }
     }
 
     public boolean podemosLeer() {

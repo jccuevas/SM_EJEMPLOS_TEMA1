@@ -13,33 +13,50 @@
     tools:context=".MusicActivity"
     tools:showIn="@layout/activity_music">
 
+    <TextView
+        android:text="@string/music_activity_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/music_play_footer"
+        android:textAppearance="@style/blueMed"
+        android:background="@drawable/uja"
+        android:layout_marginRight="25dp"
+        android:layout_marginEnd="25dp" />
+
+    <TextView
+        android:text="@string/music_activity_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/music_play_title"
+        android:textAppearance="@style/blueLarge"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/fragment_vertical_margin" />
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/main_play_line1">
+        android:id="@+id/main_play_line1"
+        android:layout_below="@+id/music_play_title"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/music_label_resource"
             android:id="@+id/music_play_resource"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:srcCompat="@android:drawable/ic_media_play"
             android:id="@+id/main_play"
-
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/music_play_resource"
-            android:layout_toEndOf="@+id/music_play_resource"
-            android:layout_weight="1" />
-
+            android:layout_weight="1"
+            android:contentDescription="@string/contentdescription_music_play"/>
     </LinearLayout>
 
     <LinearLayout
@@ -56,22 +73,14 @@
             android:layout_height="wrap_content"
             android:text="@string/music_label_external"
             android:id="@+id/music_play_resource2"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:srcCompat="@android:drawable/ic_media_play"
             android:id="@+id/main_play2"
-
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/music_play_resource"
-            android:layout_toEndOf="@+id/music_play_resource"
-            android:layout_weight="1" />
-
+            android:layout_weight="1"
+            android:contentDescription="@string/contentdescription_music_play"/>
     </LinearLayout>
-
 </RelativeLayout>
