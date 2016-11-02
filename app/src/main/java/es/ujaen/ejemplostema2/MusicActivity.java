@@ -92,11 +92,9 @@ public class MusicActivity extends AppCompatActivity {
                 ActivityCompat.requestPermissions(MusicActivity.this,
                         new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                         REQUEST_PERMISSION_READEXTERNAL);
-
             } else {
 
                 // No se necesita explicación, se pasa a solicitar el permiso.
-
                 ActivityCompat.requestPermissions(MusicActivity.this,
                         new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                         REQUEST_PERMISSION_READEXTERNAL);
