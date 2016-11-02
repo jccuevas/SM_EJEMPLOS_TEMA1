@@ -26,6 +26,7 @@ public class MusicActivity extends AppCompatActivity {
     private ImageView mPlayExternal = null;
 
     private MediaPlayer mMPlayer = null;
+    private MediaPlayer mMPlayerEx = null;
     private View mMainView = null;
     private int audioSessionIdRaw = 0;
     private int audioSessionIdExternal = 0;
@@ -132,6 +133,12 @@ public class MusicActivity extends AppCompatActivity {
     }
 
     protected void playMusic() {
+        if (mMPlayerEx != null) {
+            if (mMPlayerEx.isPlaying()) {
+                mMPlayerEx.stop();
+            }
+        }
+
         if (mMPlayer != null)
             if (mMPlayer.isPlaying()) {
                 mMPlayer.pause();
@@ -146,23 +153,19 @@ public class MusicActivity extends AppCompatActivity {
     protected void playMusicExternal(String path) {
 
 
-        if (mMPlayer != null && audioSessionIdRaw!=0) {
-            mMPlayer.stop();
-            try {
-                iniExternalAudio(mExternalPath);
-                audioSessionIdRaw=0;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        if (mMPlayer != null && audioSessionIdRaw != 0) {
+            if (mMPlayer.isPlaying())
+                mMPlayer.stop();
+
         }
 
-        if (mMPlayer != null) {
-            if (mMPlayer.isPlaying()) {
-                mMPlayer.pause();
+        if (mMPlayerEx != null) {
+            if (mMPlayerEx.isPlaying()) {
+                mMPlayerEx.pause();
                 mPlayExternal.setImageDrawable(ContextCompat.getDrawable(MusicActivity.this, android.R.drawable.ic_media_play));
             } else {
 
-                mMPlayer.start();
+                mMPlayerEx.start();
                 mPlayExternal.setImageDrawable(ContextCompat.getDrawable(MusicActivity.this, android.R.drawable.ic_media_pause));
             }
 
@@ -175,30 +178,20 @@ public class MusicActivity extends AppCompatActivity {
         }
     }
 
-    private void iniExternalAudio(String path) throws IOException{
-        mMPlayer = new MediaPlayer();
-        mMPlayer.setDataSource(path);
-        mMPlayer.prepare();
-        mMPlayer.start();
+    private void iniExternalAudio(String path) throws IOException {
+        mMPlayerEx = new MediaPlayer();
+        mMPlayerEx.setDataSource(path);
+        mMPlayerEx.prepare();
+        mMPlayerEx.start();
         mPlayExternal.setImageDrawable(ContextCompat.getDrawable(MusicActivity.this, android.R.drawable.ic_media_pause));
     }
+
     @Override
     public void onResume() {
         super.onResume();
-        if (audioSessionIdRaw != 0) {
-            mMPlayer = MediaPlayer.create(MusicActivity.this, R.raw.audio_vivaldi);
-            audioSessionIdRaw = mMPlayer.getAudioSessionId();
-        } else if (audioSessionIdExternal != 0) {
-            try {
-                iniExternalAudio(mExternalPath);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            //playMusicExternal();
-        } else {
-            mMPlayer = MediaPlayer.create(MusicActivity.this, R.raw.audio_vivaldi);
-            audioSessionIdRaw=mMPlayer.getAudioSessionId();
-        }
+
+        mMPlayer = MediaPlayer.create(MusicActivity.this, R.raw.audio_vivaldi);
+        mMPlayerEx = new MediaPlayer();
     }
 
     @Override
@@ -207,7 +200,9 @@ public class MusicActivity extends AppCompatActivity {
         if (mMPlayer.isPlaying())
             mMPlayer.stop();
         mMPlayer.release();
-
+        if (mMPlayerEx.isPlaying())
+            mMPlayerEx.stop();
+        mMPlayerEx.release();
     }
 
     public boolean podemosLeer() {
