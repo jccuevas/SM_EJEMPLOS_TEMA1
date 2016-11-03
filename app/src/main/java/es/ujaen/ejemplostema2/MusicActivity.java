@@ -149,13 +149,17 @@ public class MusicActivity extends AppCompatActivity {
         }
 
         if (mMPlayer != null)
-            if (mMPlayer.isPlaying()) {
-                mMPlayer.pause();
-                mPlayRaw.setImageDrawable(ContextCompat.getDrawable(MusicActivity.this, android.R.drawable.ic_media_play));
-            } else {
+            try {
+                if (mMPlayer.isPlaying()) {
+                    mMPlayer.pause();
+                    mPlayRaw.setImageDrawable(ContextCompat.getDrawable(MusicActivity.this, android.R.drawable.ic_media_play));
+                } else {
 
-                mMPlayer.start();
-                mPlayRaw.setImageDrawable(ContextCompat.getDrawable(MusicActivity.this, android.R.drawable.ic_media_pause));
+                    mMPlayer.start();
+                    mPlayRaw.setImageDrawable(ContextCompat.getDrawable(MusicActivity.this, android.R.drawable.ic_media_pause));
+                }
+            } catch (IllegalStateException ex) {
+                Log.d("MusicActivity", "IllegalStateException");
             }
 
     }
@@ -175,32 +179,23 @@ public class MusicActivity extends AppCompatActivity {
         }
 
 
-
-    if(mMPlayerEx!=null)
-
-    {
-        if (mMPlayerEx.isPlaying()) {
-            mMPlayerEx.pause();
-            mPlayExternal.setImageDrawable(ContextCompat.getDrawable(MusicActivity.this, android.R.drawable.ic_media_play));
+        if (mMPlayerEx != null) {
+            if (mMPlayerEx.isPlaying()) {
+                mMPlayerEx.pause();
+                mPlayExternal.setImageDrawable(ContextCompat.getDrawable(MusicActivity.this, android.R.drawable.ic_media_play));
+            } else {
+                mMPlayerEx.start();
+                mPlayExternal.setImageDrawable(ContextCompat.getDrawable(MusicActivity.this, android.R.drawable.ic_media_pause));
+            }
         } else {
-
-            mMPlayerEx.start();
-            mPlayExternal.setImageDrawable(ContextCompat.getDrawable(MusicActivity.this, android.R.drawable.ic_media_pause));
+            try {
+                iniExternalAudio(path);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
     }
-
-    else
-
-    {
-        try {
-            iniExternalAudio(path);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-}
 
     private void iniExternalAudio(String path) throws IOException {
         mMPlayerEx = new MediaPlayer();
@@ -222,14 +217,26 @@ public class MusicActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();
         if (mMPlayerEx != null) {
-            if (mMPlayer.isPlaying())
-                mMPlayer.stop();
-            mMPlayer.release();
+            try {
+                if (mMPlayer.isPlaying())
+                    mMPlayer.stop();
+                mMPlayer.release();
+            } catch (IllegalStateException ex) {
+                Log.d("MusicActivity", "IllegalStateException");
+            } finally {
+                mPlayExternal.setImageDrawable(ContextCompat.getDrawable(MusicActivity.this, android.R.drawable.ic_media_play));
+            }
         }
         if (mMPlayerEx != null) {
-            if (mMPlayerEx.isPlaying())
-                mMPlayerEx.stop();
-            mMPlayerEx.release();
+            try {
+                if (mMPlayerEx.isPlaying())
+                    mMPlayerEx.stop();
+                mMPlayerEx.release();
+            } catch (IllegalStateException ex) {
+                Log.d("MusicActivity", "IllegalStateException");
+            } finally {
+                mPlayRaw.setImageDrawable(ContextCompat.getDrawable(MusicActivity.this, android.R.drawable.ic_media_play));
+            }
         }
     }
 
