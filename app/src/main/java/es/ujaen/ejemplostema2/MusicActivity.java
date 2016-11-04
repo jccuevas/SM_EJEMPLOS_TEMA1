@@ -134,20 +134,6 @@ public class MusicActivity extends AppCompatActivity {
     }
 
     protected void playMusic() {
-        if (mMPlayerEx != null) {
-            try {
-                if (mMPlayerEx.isPlaying()) {
-                    mMPlayerEx.stop();
-
-                }
-                mMPlayerEx.release();
-            } catch (IllegalStateException ex) {
-                Log.d("MusicActivity", "IllegalStateException");
-            } finally {
-                mPlayExternal.setImageDrawable(ContextCompat.getDrawable(MusicActivity.this, android.R.drawable.ic_media_play));
-            }
-        }
-
         if (mMPlayer != null)
             try {
                 if (mMPlayer.isPlaying()) {
@@ -165,20 +151,6 @@ public class MusicActivity extends AppCompatActivity {
     }
 
     protected void playMusicExternal(String path) {
-        try {
-            if (mMPlayer != null) {
-                if (mMPlayer.isPlaying()) {
-                    mMPlayer.stop();
-                }
-                mMPlayer.release();
-            }
-        } catch (IllegalStateException ex) {
-            Log.d("MusicActivity", "IllegalStateException");
-        } finally {
-            mPlayRaw.setImageDrawable(ContextCompat.getDrawable(MusicActivity.this, android.R.drawable.ic_media_play));
-        }
-
-
         if (mMPlayerEx != null) {
             if (mMPlayerEx.isPlaying()) {
                 mMPlayerEx.pause();
