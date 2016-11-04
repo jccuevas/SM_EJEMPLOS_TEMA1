@@ -20,6 +20,8 @@ import android.widget.ImageView;
 import java.io.File;
 import java.io.IOException;
 
+import es.ujaen.ejemplostema2.sound.Sounds;
+
 public class MusicActivity extends AppCompatActivity {
     public static final int REQUEST_PERMISSION_READEXTERNAL = 1;
 
@@ -130,6 +132,17 @@ public class MusicActivity extends AppCompatActivity {
                 return;
             }
 
+        }
+    }
+
+    public void onPlay(View view){
+        switch (view.getId()){
+            case R.id.music_gong:
+                Sounds.playSound(this,Sounds.S4);
+                break;
+            case R.id.music_platillos:
+                Sounds.playSound(this,Sounds.S5);
+                break;
         }
     }
 

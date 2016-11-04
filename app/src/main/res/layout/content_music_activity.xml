@@ -83,4 +83,38 @@
             android:layout_weight="1"
             android:contentDescription="@string/contentdescription_music_play"/>
     </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/main_play_soundpool"
+        android:layout_below="@+id/main_play_line2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:text="@string/music_title_soundpoll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/music_title_soundpool"
+            android:layout_weight="1"
+            android:textAppearance="@style/blueSmall" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_platillos"
+            android:id="@+id/music_platillos"
+            android:layout_weight="1"
+            android:onClick="onPlay" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_gong"
+            android:id="@+id/music_gong"
+            android:layout_weight="1"
+            android:onClick="onPlay" />
+    </LinearLayout>
 </RelativeLayout>
