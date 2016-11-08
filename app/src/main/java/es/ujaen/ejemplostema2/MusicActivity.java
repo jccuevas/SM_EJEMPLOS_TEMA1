@@ -1,10 +1,16 @@
 package es.ujaen.ejemplostema2;
 
 import android.Manifest;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
+import android.media.MediaRecorder;
+import android.provider.MediaStore.MediaColumns;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
@@ -24,6 +30,7 @@ import es.ujaen.ejemplostema2.sound.Sounds;
 
 public class MusicActivity extends AppCompatActivity {
     public static final int REQUEST_PERMISSION_READEXTERNAL = 1;
+    public static final int REQUEST_PERMISSION_RECORDAUDIO = 2;
 
     private ImageView mPlayRaw = null;
     private ImageView mPlayExternal = null;
@@ -34,8 +41,18 @@ public class MusicActivity extends AppCompatActivity {
     private int audioSessionIdRaw = 0;
     private int audioSessionIdExternal = 0;
     final File music = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC);
+    final File audio = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PODCASTS);
+
 
     String mExternalPath = music.getPath() + "/" + "invierno.mp3";
+
+    /*
+    * Grabación
+    * */
+    private MediaRecorder mRecorder = null;
+    private MediaPlayer mPlayer = null;
+    private boolean mRecording = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +60,7 @@ public class MusicActivity extends AppCompatActivity {
         setContentView(R.layout.activity_music);
         mMainView = findViewById(R.id.content_main);
 
+        Sounds.initSounds(this);
 
         mPlayRaw = (ImageView) findViewById(R.id.main_play);
 
@@ -64,6 +82,7 @@ public class MusicActivity extends AppCompatActivity {
                 } else {
                     Snackbar.make(mMainView, R.string.externalstorage_error,
                             Snackbar.LENGTH_LONG).show();
+
                 }
 
             }
@@ -73,12 +92,76 @@ public class MusicActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(mMainView, R.string.no_action,
-                        Snackbar.LENGTH_LONG).show();
+                onRecord(!mRecording);
+
+
             }
         });
     }
 
+    private void onRecord(boolean start) {
+        if (start) {
+            Snackbar.make(mMainView, R.string.music_startrecording,
+                    Snackbar.LENGTH_LONG).show();
+
+            checkPermissionsRecord();
+        } else {
+            Snackbar.make(mMainView, R.string.music_stoprecording,
+                    Snackbar.LENGTH_LONG).show();
+
+            stopRecording();
+        }
+    }
+
+    //    private void onPlay(boolean start) {
+//        if (start) {
+//            startPlaying();
+//        } else {
+//            stopPlaying();
+//        }
+//    }
+//
+//    private void startPlaying() {
+//        mPlayer = new MediaPlayer();
+//        try {
+//            mPlayer.setDataSource(mFileName);
+//            mPlayer.prepare();
+//            mPlayer.start();
+//        } catch (IOException e) {
+//            Log.e(LOG_TAG, "prepare() failed");
+//        }
+//    }
+//
+//    private void stopPlaying() {
+//        mPlayer.release();
+//        mPlayer = null;
+//    }
+    private void startRecording() {
+        mRecorder = new MediaRecorder();
+        mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        mRecorder.setOutputFile(audio.getPath() + "/audioEjemplos2.3gpp");
+        mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+
+        try {
+            mRecorder.prepare();
+            mRecorder.start();
+            mRecording = !mRecording;
+        } catch (IOException e) {
+            Log.e("MusicActivity", "prepare() failed");
+        }
+
+
+    }
+
+    private void stopRecording() {
+        if (mRecorder != null) {
+            mRecorder.stop();
+            mRecorder.release();
+            mRecorder = null;
+            mRecording = !mRecording;
+        }
+    }
 
     public void checkPermissions() {
         if (ContextCompat.checkSelfPermission(MusicActivity.this,
@@ -112,15 +195,46 @@ public class MusicActivity extends AppCompatActivity {
 
     }
 
+    public void checkPermissionsRecord() {
+        if (ContextCompat.checkSelfPermission(MusicActivity.this,
+                Manifest.permission.RECORD_AUDIO)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Se pregunta si debemos poner una explicación
+            if (ActivityCompat.shouldShowRequestPermissionRationale(MusicActivity.this,
+                    Manifest.permission.RECORD_AUDIO)) {
+
+                // Se muestra una breve explicación de por qué solicitar el permiso
+                Snackbar message = Snackbar.make(mMainView, R.string.fragment_record_permission,
+                        Snackbar.LENGTH_LONG);
+                message.show();
+                ActivityCompat.requestPermissions(MusicActivity.this,
+                        new String[]{Manifest.permission.RECORD_AUDIO},
+                        REQUEST_PERMISSION_RECORDAUDIO);
+            } else {
+
+                // No se necesita explicación, se pasa a solicitar el permiso.
+                ActivityCompat.requestPermissions(MusicActivity.this,
+                        new String[]{Manifest.permission.RECORD_AUDIO},
+                        REQUEST_PERMISSION_RECORDAUDIO);
+
+                // REQUEST_PERMISSION_READEXTERNAL es una constante para identificar
+                // la petición de permisos concreta
+            }
+        } else {
+            startRecording();
+        }
+
+    }
+
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {
         switch (requestCode) {
-            case REQUEST_PERMISSION_READEXTERNAL: {
+            case REQUEST_PERMISSION_READEXTERNAL:
                 // Si la petición es cancelada se devuelve un vector vacío
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
                     // Permiso concedido
                     playMusicExternal(mExternalPath);
                 } else {
@@ -129,19 +243,31 @@ public class MusicActivity extends AppCompatActivity {
                     Snackbar.make(mMainView, R.string.permission_readexternal_denied,
                             Snackbar.LENGTH_LONG).show();
                 }
-                return;
-            }
+                break;
+            case REQUEST_PERMISSION_RECORDAUDIO:
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // Permiso concedido
+                    Snackbar.make(mMainView, R.string.music_startrecording,
+                            Snackbar.LENGTH_LONG).show();
+                    startRecording();
+                } else {
 
+                    // Permiso denegado por el usuario
+                    Snackbar.make(mMainView, R.string.permission_record_denied,
+                            Snackbar.LENGTH_LONG).show();
+                }
+                break;
         }
     }
 
-    public void onPlay(View view){
-        switch (view.getId()){
+    public void onPlay(View view) {
+        switch (view.getId()) {
             case R.id.music_gong:
-                Sounds.playSound(this,Sounds.S4);
+                Sounds.playSound(this, Sounds.S4);
                 break;
             case R.id.music_platillos:
-                Sounds.playSound(this,Sounds.S5);
+                Sounds.playSound(this, Sounds.S5);
                 break;
         }
     }
