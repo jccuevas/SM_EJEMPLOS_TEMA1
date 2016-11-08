@@ -155,7 +155,11 @@
     <string name="fragment_record_permission">El fragmento necesita permisos para acceder al micrófono para grabar audio</string>
     <string name="music_activity_footer">En esta actividad se muestran ejemplos de reproducción de audio, acceso a permisos peligrosos y comprobación de acceso a memorias externas</string>
     <string name="music_activity_title">Reproducción de audio</string>
+    <string name="music_activity_record">Grabación de audio</string>
     <string name="contentdescription_music_play">Botón de reproducción</string>
+    <string name="contentdescription_music_platillos">Platillos</string>
+    <string name="contentdescription_music_gong">Gong</string>
+    <string name="contentdescription_music_grabar">Micrófono</string>
     <string name="music_title_soundpoll">Ejemplos con SoundPool</string>
     <string name="music_startrecording">Grabando</string>
     <string name="music_stoprecording">Parando la grabación</string>

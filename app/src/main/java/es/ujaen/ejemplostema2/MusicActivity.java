@@ -1,31 +1,22 @@
 package es.ujaen.ejemplostema2;
 
 import android.Manifest;
-import android.content.ContentResolver;
-import android.content.ContentValues;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
-import android.provider.MediaStore.MediaColumns;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.MediaStore;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-
 import java.io.File;
 import java.io.IOException;
-
 import es.ujaen.ejemplostema2.sound.Sounds;
 
 public class MusicActivity extends AppCompatActivity {
@@ -34,25 +25,28 @@ public class MusicActivity extends AppCompatActivity {
 
     private ImageView mPlayRaw = null;
     private ImageView mPlayExternal = null;
+    private ImageView mRecord = null;
+    private ImageView mPlayRecord=null;
 
     private MediaPlayer mMPlayer = null;
     private MediaPlayer mMPlayerEx = null;
+    private MediaPlayer mPlayerRecorded = null;
+
     private View mMainView = null;
-    private int audioSessionIdRaw = 0;
-    private int audioSessionIdExternal = 0;
+
     final File music = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC);
     final File audio = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PODCASTS);
 
 
     String mExternalPath = music.getPath() + "/" + "invierno.mp3";
-
+    String mExternalRecordPath=audio.getPath() + "/audioEjemplos2.3gpp";
     /*
     * Grabación
     * */
     private MediaRecorder mRecorder = null;
-    private MediaPlayer mPlayer = null;
-    private boolean mRecording = false;
 
+    private boolean mRecording = false;
+    private boolean mPlaying = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,13 +82,21 @@ public class MusicActivity extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        mRecord = (ImageView) findViewById(R.id.music_record);
+        mRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onRecord(!mRecording);
 
 
+            }
+        });
+
+        mPlayRecord = (ImageView) findViewById(R.id.music_play_recorded);
+        mPlayRecord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onPlay();
             }
         });
     }
@@ -113,42 +115,48 @@ public class MusicActivity extends AppCompatActivity {
         }
     }
 
-    //    private void onPlay(boolean start) {
-//        if (start) {
-//            startPlaying();
-//        } else {
-//            stopPlaying();
-//        }
-//    }
-//
-//    private void startPlaying() {
-//        mPlayer = new MediaPlayer();
-//        try {
-//            mPlayer.setDataSource(mFileName);
-//            mPlayer.prepare();
-//            mPlayer.start();
-//        } catch (IOException e) {
-//            Log.e(LOG_TAG, "prepare() failed");
-//        }
-//    }
-//
-//    private void stopPlaying() {
-//        mPlayer.release();
-//        mPlayer = null;
-//    }
+        private void onPlay() {
+        if (!mPlaying) {
+            startPlayingRecorded();
+        } else {
+            stopPlayingRecorded();
+        }
+    }
+
+    private void startPlayingRecorded() {
+        mPlayerRecorded = new MediaPlayer();
+        try {
+            mPlayerRecorded.setDataSource(mExternalRecordPath);
+            mPlayerRecorded.prepare();
+            mPlayerRecorded.start();
+            mPlaying=true;
+            mPlayRecord.setImageDrawable(ContextCompat.getDrawable(MusicActivity.this, R.drawable.ic_stop));
+        } catch (IOException e) {
+            Log.e("MusicActivity", "prepare() failed");
+        }
+    }
+
+    private void stopPlayingRecorded() {
+        mPlayerRecorded.release();
+        mPlayerRecorded = null;
+        mPlaying=false;
+        mPlayRecord.setImageDrawable(ContextCompat.getDrawable(MusicActivity.this,android.R.drawable.ic_media_play));
+
+    }
     private void startRecording() {
         mRecorder = new MediaRecorder();
         mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-        mRecorder.setOutputFile(audio.getPath() + "/audioEjemplos2.3gpp");
+        mRecorder.setOutputFile(mExternalRecordPath);
         mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
 
         try {
             mRecorder.prepare();
             mRecorder.start();
             mRecording = !mRecording;
+            mRecord.setBackgroundColor(getResources().getColor(android.R.color.holo_red_dark));
         } catch (IOException e) {
-            Log.e("MusicActivity", "prepare() failed");
+            Log.e("MusicActivity", "prepare() failed "+e.getMessage());
         }
 
 
@@ -160,6 +168,7 @@ public class MusicActivity extends AppCompatActivity {
             mRecorder.release();
             mRecorder = null;
             mRecording = !mRecording;
+            mRecord.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
         }
     }
 
