@@ -34,12 +34,12 @@ public class MusicActivity extends AppCompatActivity {
 
     private View mMainView = null;
 
-    final File music = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC);
-    final File audio = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PODCASTS);
+    File music = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC);
+    File audio = null;
 
 
     String mExternalPath = music.getPath() + "/" + "invierno.mp3";
-    String mExternalRecordPath=audio.getPath() + "/audioEjemplos2.3gpp";
+    String mRecordPath ="";
     /*
     * Grabación
     * */
@@ -53,6 +53,8 @@ public class MusicActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music);
         mMainView = findViewById(R.id.content_main);
+        audio = getFilesDir();
+        mRecordPath =audio.getPath() + "/audioEjemplos2.3gpp";
 
         Sounds.initSounds(this);
 
@@ -126,7 +128,7 @@ public class MusicActivity extends AppCompatActivity {
     private void startPlayingRecorded() {
         mPlayerRecorded = new MediaPlayer();
         try {
-            mPlayerRecorded.setDataSource(mExternalRecordPath);
+            mPlayerRecorded.setDataSource(mRecordPath);
             mPlayerRecorded.prepare();
             mPlayerRecorded.start();
             mPlaying=true;
@@ -147,7 +149,7 @@ public class MusicActivity extends AppCompatActivity {
         mRecorder = new MediaRecorder();
         mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-        mRecorder.setOutputFile(mExternalRecordPath);
+        mRecorder.setOutputFile(mRecordPath);
         mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
 
         try {
