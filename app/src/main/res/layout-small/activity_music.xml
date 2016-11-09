@@ -153,6 +153,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/music_play_footer"
             android:textAppearance="@style/blueMed"
-            android:background="@drawable/uja" />
+            android:background="@drawable/uja"
+            android:layout_weight="1"/>
     </LinearLayout>
 </ScrollView>
