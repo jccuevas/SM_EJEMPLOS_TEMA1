@@ -9,6 +9,7 @@
     <string name="navbar_serviciosmoviles">Servicios Móviles</string>
     <string name="navbar_title">Ejemplos Tema 2</string>
 
+    <string name="navmenu_controls">Controles básicos</string>
     <string name="navmenu_linearlayout">Layouts y fragmentos</string>
     <string name="navmenu_almacenamiento">Almacenamiento</string>
     <string name="navmenu_fragdinamicos">Fragmentos dinámicos</string>
@@ -49,11 +50,11 @@
     <string name="help_title">Ayuda de la aplicación de ejemplos</string>
     <string name="help_text">Esta es una aplicación para mostrar los ejemplos de clase de la asignatura Servicios Móviles del Grado de Ingeniería Telemática de la Universidad de Jaén</string>
     <string name="help_uja">Universidad de Jaén</string>
-	<string name="help_ninepatch">El fondo del TextView del pie de la pantalla es un
+    <string name="help_ninepatch">El fondo del TextView del pie de la pantalla es un
 		nine patch, revísalo para comprobar como funcionan
 	</string>
     <string name="help_contents">Contenidos</string>
-	<string name="help_content_p1">En esta aplicación se podrán ver ejemplos de menús
+    <string name="help_content_p1">En esta aplicación se podrán ver ejemplos de menús
 		de opciones, menús contextuales, listas y gráficos</string>
 
 
@@ -163,5 +164,7 @@
     <string name="music_title_soundpoll">Ejemplos con SoundPool</string>
     <string name="music_startrecording">Grabando</string>
     <string name="music_stoprecording">Parando la grabación</string>
+    <string name="controles_button">Botón</string>
+    <string name="controles">¿Qué ha pasado?</string>
 
 </resources>

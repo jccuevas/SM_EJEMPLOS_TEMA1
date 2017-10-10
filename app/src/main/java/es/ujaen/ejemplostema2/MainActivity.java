@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -30,7 +31,7 @@ import android.widget.Toast;
 import com.example.menu.FragmentosDinamicos;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, FragmentoControles.OnFragmentInteractionListener {
 
 
     public static final int REQUEST_EXTERNAL_STORAGE = 1;
@@ -66,8 +67,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 showHelpFragment();
 
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
+                Snackbar.make(view, getString(R.string.help_title), Snackbar.LENGTH_LONG).show();
             }
         });
 
@@ -166,6 +166,20 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        if (id == R.id.nav_controls) {//Opción mostrar fragmento de controles básicos
+
+            //Se obtiene el fragmento que se esté mostrando actualemente
+            FragmentTransaction ft = mFM.beginTransaction();
+            Fragment f = mFM.findFragmentById(R.id.fragmento_lista);
+            FragmentoControles controles = new FragmentoControles();
+            if (f != null) {//Si ya hay un fragmento se elimina
+                ft.remove(f);
+                ft.replace(R.id.fragmento_lista, controles);
+            } else {//Si no hay fragmento, se añade simplemente
+                ft.add(R.id.fragmento_lista, controles, "controles");
+            }
+            ft.commit();
+        }else
         if (id == R.id.nav_almacenamiento) {//Opción mostrar fragmento de almacenamiento
 
             //Se obtiene el fragmento que se esté mostrando actualemente
@@ -259,5 +273,12 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
+    @Override
+    /**
+     * Método que podrá ser ejecutado cuando se invoque desde el fragmento FragmentoControles
+     * Este es un ejemplo de comunicación entre Actividades y Fragmentos
+     */
+    public void onFragmentInteraction(Uri uri) {
+    //TODO Agregar una operación
+    }
 }
