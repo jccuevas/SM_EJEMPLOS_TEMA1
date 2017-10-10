@@ -1,16 +1,25 @@
 package es.ujaen.ejemplostema2;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.Spannable;
+import android.text.style.StyleSpan;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -89,6 +98,8 @@ public class FragmentoControles extends Fragment {
         Button boton = (Button) vista.findViewById(R.id.fragment_controles_button);
         final TextView texto = (TextView) vista.findViewById(R.id.fragment_controles_textocentral);
         RadioGroup radiog = (RadioGroup) vista.findViewById(R.id.fragment_controles_gruporb);
+        final EditText edittext = (EditText) vista.findViewById(R.id.fragment_controles_editText);
+        final CheckBox checkBox = (CheckBox) vista.findViewById(R.id.fragment_controles_checkbox);
 
 
         iboton.setOnClickListener(new View.OnClickListener() {
@@ -172,7 +183,33 @@ public class FragmentoControles extends Fragment {
 
         });
 
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                //Creamos un nuevo objeto de tipo Editable
+                String texto = edittext.getEditableText().toString();
+                Editable str = edittext.getEditableText();//Editable.Factory.getInstance().newEditable("Esto es negrita.");
 
+                if (texto.length() > 0) {
+                    if (buttonView.isChecked()) {
+                        //Marcamos cono fuente negrita la palabra "simulacro"
+                        str.setSpan(new StyleSpan(Typeface.BOLD), 0, texto.length(), Spannable.SPAN_COMPOSING);
+                    } else {
+                        str.setSpan(new StyleSpan(Typeface.NORMAL), 0, texto.length(), Spannable.SPAN_COMPOSING);
+                    }
+                }
+            }
+        });
+
+        edittext.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_NEXT) {
+                    checkBox.setChecked(false);
+                }
+                return false;
+            }
+        });
         return vista;
     }
 
