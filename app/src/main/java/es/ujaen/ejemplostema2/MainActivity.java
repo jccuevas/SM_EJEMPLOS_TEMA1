@@ -250,10 +250,7 @@ public class MainActivity extends AppCompatActivity
 
             Intent music = new Intent(this,MusicActivity.class);
             startActivity(music);
-
-              //  showAudioFragment();
-
-
+            //  showAudioFragment();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -261,38 +258,6 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    protected void showAudioFragment(){
-        FragmentTransaction ft = mFM.beginTransaction();
-        Fragment f = mFM.findFragmentById(R.id.fragmento_lista);
-        FragmentoAudio audio = new FragmentoAudio();
-        if (f != null) {
-            ft.remove(f);
-            ft.replace(R.id.fragmento_lista, audio);
-        } else {
-            ft.add(R.id.fragmento_lista, audio, "audio");
-        }
-        ft.commit();
-    }
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case REQUEST_EXTERNAL_STORAGE: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-                   showAudioFragment();
 
-                } else {
-                    showAudioFragment();
-                    Toast.makeText(this, "El ejemplo de audio necesita del permiso para leer", Toast.LENGTH_LONG).show();
-                }
-                return;
-            }
-
-            // other 'case' lines to check for other
-            // permissions this app might request
-        }
-    }
 }
