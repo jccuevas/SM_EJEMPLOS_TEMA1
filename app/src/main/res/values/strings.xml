@@ -166,5 +166,11 @@
     <string name="music_stoprecording">Parando la grabación</string>
     <string name="controles_button">Botón</string>
     <string name="controles">¿Qué ha pasado?</string>
+    <string name="controles_pulsado">¡Pulsado!</string>
+    <string name="controles_encender">Encender</string>
+    <string name="controles_contentdescription_bombilla">bombilla</string>
+    <string name="controles_radio1_opcion1">Opción 1</string>
+    <string name="controles_radio2_opcion2">Opción 2</string>
+    <string name="controles_checkbox">Negrita</string>
 
 </resources>

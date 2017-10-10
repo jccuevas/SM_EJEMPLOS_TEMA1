@@ -3,10 +3,23 @@ package es.ujaen.ejemplostema2;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ToggleButton;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -26,6 +39,9 @@ public class FragmentoControles extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    final static public String[] datos = {"Verde", "Azul", "Rojo"};
+
 
     private OnFragmentInteractionListener mListener;
 
@@ -58,16 +74,109 @@ public class FragmentoControles extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.layout_fragment_controles, container, false);
+        final View vista = inflater.inflate(R.layout.layout_fragment_controles, container, false);
+
+
+        final ImageButton iboton = (ImageButton) vista.findViewById(R.id.fragment_controles_imageButton);
+        Button boton = (Button) vista.findViewById(R.id.fragment_controles_button);
+        final TextView texto = (TextView) vista.findViewById(R.id.fragment_controles_textocentral);
+        RadioGroup radiog = (RadioGroup) vista.findViewById(R.id.fragment_controles_gruporb);
+
+
+        iboton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                texto.setText(getString(R.string.controles_pulsado));
+                texto.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        texto.setText(getString(R.string.controles));
+                    }
+                }, 3000);
+            }
+        });
+
+        boton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                texto.setText(getString(R.string.controles_pulsado));
+                texto.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        texto.setText(getString(R.string.controles));
+                    }
+                }, 3000);
+            }
+        });
+
+        final ToggleButton tboton = (ToggleButton) vista.findViewById(R.id.fragment_controles_toggleButton);
+        tboton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (tboton.isChecked()) {
+                    iboton.setBackgroundResource(R.drawable.ic_bombilla_on);
+                } else {
+                    iboton.setBackgroundResource(R.drawable.ic_bombilla_off);
+                }
+            }
+        });
+
+        radiog.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                switch (checkedId) {
+                    case R.id.radioButton1:
+                        Toast.makeText(getContext(), getString(R.string.controles_radio1_opcion1), Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.radioButton2:
+                        Toast.makeText(getContext(), getString(R.string.controles_radio2_opcion2), Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        });
+
+        ArrayAdapter<String> itemsAdapter =
+                new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, datos);
+        Spinner spinner = (Spinner) vista.findViewById(R.id.fragment_controles_spinner);
+        itemsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(itemsAdapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0:
+                        vista.findViewById(R.id.controles_root).setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
+                        break;
+                    case 1:
+                        vista.findViewById(R.id.controles_root).setBackgroundColor(getResources().getColor(android.R.color.holo_blue_bright));
+                        break;
+                    case 2:
+                        vista.findViewById(R.id.controles_root).setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+
+        });
+
+
+        return vista;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
+    // TODO: Rename method, update argument and hook methodp into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
