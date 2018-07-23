@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Ejemplos Tema 2</string>
+    <string name="app_name">Ejemplos Tema 1</string>
     <string name="app_author">Juan Carlos Cuevas Martínez</string>
     <string name="app_affiliaton">Dpto. Ingeniería de Telecomunicación\nUniversidad de Jaén</string>
 
@@ -7,7 +7,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="navbar_serviciosmoviles">Servicios Móviles</string>
-    <string name="navbar_title">Ejemplos Tema 2</string>
+    <string name="navbar_title">Ejemplos Tema 1</string>
 
     <string name="navmenu_controls">Controles básicos</string>
     <string name="navmenu_linearlayout">Layouts y fragmentos</string>
