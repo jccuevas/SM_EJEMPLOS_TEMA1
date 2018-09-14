@@ -20,22 +20,6 @@
             android:id="@+id/nav_fragmentosdinamicos"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/navmenu_fragdinamicos" />
-        <item
-            android:id="@+id/nav_animaciones"
-            android:icon="@drawable/ic_menu_imagen"
-            android:title="@string/navmenu_animaciones" />
-        <item
-            android:id="@+id/nav_graficos"
-            android:icon="@drawable/ic_menu_imagen"
-            android:title="@string/navmenu_graficos" />
-        <item
-            android:id="@+id/nav_customview"
-            android:icon="@drawable/ic_menu_imagen"
-            android:title="@string/navmenu_customview" />
-        <item
-            android:id="@+id/nav_audio"
-            android:icon="@drawable/ic_menu_music"
-            android:title="@string/navmenu_audio" />
     </group>
 
     <item android:title="Communicate">

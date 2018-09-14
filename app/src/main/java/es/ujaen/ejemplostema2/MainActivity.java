@@ -224,47 +224,6 @@ public class MainActivity extends AppCompatActivity
             FragmentoAcercade fragmentoAcercade = FragmentoAcercade.newInstance("uno", "dos");
             fragmentoAcercade.show(mFM, "acercade");
 
-        } else if (id == R.id.nav_graficos) {
-            FragmentTransaction ft = mFM.beginTransaction();
-            Fragment f = mFM.findFragmentById(R.id.fragmento_lista);
-            FragmentoGraficos graficos = new FragmentoGraficos();
-            if (f != null) {
-                ft.remove(f);
-                ft.replace(R.id.fragmento_lista, graficos);
-            } else {
-                ft.add(R.id.fragmento_lista, graficos, "graficos");
-            }
-            ft.commit();
-
-        } else if (id == R.id.nav_customview) {
-            FragmentTransaction ft = mFM.beginTransaction();
-            Fragment f = mFM.findFragmentById(R.id.fragmento_lista);
-            FragmentoCustomView customView = new FragmentoCustomView();
-            if (f != null) {
-                ft.remove(f);
-                ft.replace(R.id.fragmento_lista, customView);
-            } else {
-                ft.add(R.id.fragmento_lista, customView, "customView");
-            }
-            ft.commit();
-
-        } else if (id == R.id.nav_animaciones) {
-            FragmentTransaction ft = mFM.beginTransaction();
-            Fragment f = mFM.findFragmentById(R.id.fragmento_lista);
-            FragmentoAnimaciones animaciones = new FragmentoAnimaciones();
-            if (f != null) {
-                ft.remove(f);
-                ft.replace(R.id.fragmento_lista, animaciones);
-            } else {
-                ft.add(R.id.fragmento_lista, animaciones, "animaciones");
-            }
-            ft.commit();
-
-        } else if (id == R.id.nav_audio) {
-
-            Intent music = new Intent(this,MusicActivity.class);
-            startActivity(music);
-            //  showAudioFragment();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

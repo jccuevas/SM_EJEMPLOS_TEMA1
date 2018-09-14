@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://D:/Mis Documentos/Docencia/git/SSM/SM_EJEMPLOS_TEMA2/EjemplosTema2.iml" filepath="D:/Mis Documentos/Docencia/git/SSM/SM_EJEMPLOS_TEMA2/EjemplosTema2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../SSM/SM_EJEMPLOS_TEMA2/EjemplosTema2.iml" filepath="$PROJECT_DIR$/../SSM/SM_EJEMPLOS_TEMA2/EjemplosTema2.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/SM_EJEMPLOS_TEMA1.iml" filepath="$PROJECT_DIR$/.idea/SM_EJEMPLOS_TEMA1.iml" />
       <module fileurl="file://$PROJECT_DIR$/SM_EJEMPLOS_TEMA2.iml" filepath="$PROJECT_DIR$/SM_EJEMPLOS_TEMA2.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
