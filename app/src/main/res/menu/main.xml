@@ -9,7 +9,7 @@
         android:title="@string/menu_help"
         android:orderInCategory="200"
         app:showAsAction="ifRoom" android:icon="@drawable/ic_action_help"/>
-    <item android:id="@+id/menu_item2"
+    <item
         android:title="@string/menu_generico"
         android:orderInCategory="60"/>
 </menu>

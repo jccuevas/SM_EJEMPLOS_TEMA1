@@ -1,12 +1,12 @@
 package es.ujaen.ejemplostema2.utils;
 
 public interface RecordTableColumns {
-	public static final String 	COLUMN_ID 		= "_id";
-	public static final String 	COLUMN_TAG = "label";
-	public static final String 	COLUMN_VALUE 	= "value";
+	String 	COLUMN_ID 		= "_id";
+	String 	COLUMN_TAG = "label";
+	String 	COLUMN_VALUE 	= "value";
 	
-	public static final String 	DATABASE_NAME 		= "recordslist";
-	public static final int 	DATABASE_VERSION 	= 1;
-	public static final String 	TABLE_RECORDS 		= "records";
+	String 	DATABASE_NAME 		= "recordslist";
+	int 	DATABASE_VERSION 	= 1;
+	String 	TABLE_RECORDS 		= "records";
 
 }

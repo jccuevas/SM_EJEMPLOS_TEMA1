@@ -6,8 +6,7 @@
     android:padding="20dp"
 
     tools:context="es.ujaen.ejemplostema2.FragmentoAcercade"
-    android:background="@drawable/shape_background"
-    android:id="@+id/fragment_acercade_root">
+    android:background="@drawable/shape_background">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -40,7 +39,6 @@
         android:text="@string/app_affiliaton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/fragment_acercade_afiliacion"
         android:gravity="center_horizontal"
         android:layout_below="@+id/fragment_acercade_author"
         android:layout_centerHorizontal="true"

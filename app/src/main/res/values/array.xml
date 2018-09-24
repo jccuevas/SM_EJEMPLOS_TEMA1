@@ -10,10 +10,4 @@
         <item>Uso de Proveedores de Contenido y Loaders</item>
         <item>Salir</item>
     </string-array>
-    <string-array name="fragment_lista_menu">
-        <item>Elemento 1</item>
-        <item>Elemento 2</item>
-        <item>Elemento 3</item>
-        <item>Elemento 4</item>
-    </string-array>
 </resources>

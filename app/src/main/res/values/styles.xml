@@ -37,8 +37,4 @@
 
     </style>
 
-    <style name="MainMenuListItem">
-        <item name="android:background">@drawable/menu_list</item>
-    </style>
-
 </resources>

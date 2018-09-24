@@ -10,11 +10,9 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark"
-    android:id="@+id/navbar_root">
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
-        android:id="@+id/navbar_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_uja"
@@ -25,11 +23,9 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="@string/navbar_title"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:id="@+id/navbar_title" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
-        android:id="@+id/navbar_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/navbar_serviciosmoviles" />
