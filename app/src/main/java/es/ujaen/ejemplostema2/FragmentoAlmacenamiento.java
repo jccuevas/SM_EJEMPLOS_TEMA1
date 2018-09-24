@@ -218,9 +218,6 @@ public class FragmentoAlmacenamiento extends Fragment {
     }
 
     public void load() {
-
-        String texto = "";
-
         try {
             String filename = mEdit_f.getEditableText().toString();
             FileInputStream is = getContext().openFileInput(filename);
@@ -228,13 +225,14 @@ public class FragmentoAlmacenamiento extends Fragment {
 			/*Lectura con serializacion */
             ObjectInputStream ois = new ObjectInputStream(is);
             Record data = null;
+            StringBuilder sb = new StringBuilder();
             try {
                 boolean end = false;
                 while (!end) {
                     try {
-
                         data = (Record) ois.readObject();
-                        texto = texto + data.toString() + "\r\n";
+                        sb.append(data.toString());
+                        sb.append("\r\n");
                     } catch (EOFException ex) {
                         end = true;
                     }
@@ -243,7 +241,7 @@ public class FragmentoAlmacenamiento extends Fragment {
                 e.printStackTrace();
             }
             is.close();
-            resultado.setText(texto);
+            resultado.setText(sb.toString());
             Toast.makeText(getContext(),
                     getResources().getString(R.string.toast_loaded),
                     Toast.LENGTH_SHORT).show();
@@ -258,8 +256,6 @@ public class FragmentoAlmacenamiento extends Fragment {
 
     public void loadExternal() {
 
-        String texto = "";
-
         String state = Environment.getExternalStorageState();
         if (Environment.MEDIA_MOUNTED.equals(state)
                 || Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
@@ -270,18 +266,21 @@ public class FragmentoAlmacenamiento extends Fragment {
                 File path = getContext().getExternalFilesDir(null);
 
                 if (path != null) {
+                    StringBuilder sb = new StringBuilder();
                     File file = new File(path, filename);
 
                     FileInputStream os = new FileInputStream(file);
                     DataInputStream dos = new DataInputStream(os);
                     int n = dos.available();
-                    texto = "Leidos (" + n + " bytes)\r\n";
+
+                    sb.append("Leidos (" + n + " bytes)\r\n");
+
                     while (dos.available() > 0) {
-                        texto = texto + " clave: " + dos.readUTF() + " valor:"
-                                + dos.readInt() + "\r\n";
+                        sb.append(" clave: " + dos.readUTF() + " valor:"
+                                + dos.readInt() + "\r\n");
                     }
 
-                    resultado.setText(texto);
+                    resultado.setText(sb.toString());
 
                     dos.close();
                     os.close();
@@ -310,12 +309,13 @@ public class FragmentoAlmacenamiento extends Fragment {
 
     public void loadDatabase() {
 
+        StringBuilder sb = new StringBuilder();
         List<Record> comentarios = database.getAllRecords();
-        String texto = "";
+
         for (Record c : comentarios) {
-            texto = texto + "\r\n" + c.getTag() + " valor=" + c.getValue();
+            sb.append("\r\n" + c.getTag() + " valor=" + c.getValue());
         }
-        resultado.setText(texto);
+        resultado.setText(sb.toString());
     }
 
     public Record getData() {

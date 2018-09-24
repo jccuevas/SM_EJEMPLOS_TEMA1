@@ -22,16 +22,10 @@
             </intent-filter>
         </activity>
 
+
+
         <activity
-            android:name="com.example.menu.Help"
-            android:label="@string/app_help"
-            android:theme="@style/AppTheme"/>
-        <activity
-            android:name="com.example.menu.Fragmentos"
-            android:label="@string/app_fragments"
-            android:theme="@style/AppTheme"/>
-        <activity
-            android:name="com.example.menu.FragmentosDinamicos"
+            android:name=".FragmentsActivity"
             android:label="@string/app_fragments_dinamicos"
             android:theme="@style/AppTheme"/>
     </application>

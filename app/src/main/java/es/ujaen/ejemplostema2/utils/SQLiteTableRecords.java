@@ -46,7 +46,7 @@ public class SQLiteTableRecords {
 	 */
 	public Record addRecord(Record record) {
 		ContentValues values = new ContentValues();
-		long insertId = -1;
+		long insertId;
 
 		values.put(RecordsSQLiteHelper.COLUMN_TAG, record.getTag());
 		values.put(RecordsSQLiteHelper.COLUMN_VALUE, record.getValue());
@@ -106,8 +106,8 @@ public class SQLiteTableRecords {
 		@Override
 		protected SQLiteDatabase doInBackground(RecordsSQLiteHelper... arg0) {
 			try {
-				SQLiteDatabase db = arg0[0].getWritableDatabase();
-				return db;
+				return arg0[0].getWritableDatabase();
+
 			} catch (SQLiteException ex) {
 				Log.d("OpenDBTask", ex.getMessage());
 				return null;

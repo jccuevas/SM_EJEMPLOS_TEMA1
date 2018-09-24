@@ -13,7 +13,7 @@
     <string name="navmenu_linearlayout">Layouts y fragmentos</string>
     <string name="navmenu_almacenamiento">Almacenamiento</string>
     <string name="navmenu_fragdinamicos">Fragmentos dinámicos</string>
-    <string name="navmenu_about">Acerca de...</string>
+    <string name="navmenu_about">Acerca de…</string>
 
     <!-- Antigua aplicación Menus-->
     <string name="app_help">Ayuda</string>
@@ -108,5 +108,7 @@
     <string name="controles_radio1_opcion1">Opción 1</string>
     <string name="controles_radio2_opcion2">Opción 2</string>
     <string name="controles_checkbox">Negrita</string>
+    <string name="main_edit_defaulttext">Put your name</string>
+    <string name="main_edittext_hint">main_edit_defaulttext</string>
 
 </resources>

@@ -1,20 +1,14 @@
 package es.ujaen.ejemplostema2;
 
 import android.Manifest;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.SubMenu;
 import android.view.View;
@@ -26,9 +20,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
-import com.example.menu.FragmentosDinamicos;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, FragmentoControles.OnFragmentInteractionListener {
@@ -43,7 +35,7 @@ public class MainActivity extends AppCompatActivity
     public static final int MENU_CONTEXTUAL_AYUDA = 1;
 
     FragmentManager mFM = null;
-    private View mLayout=null;
+    private View mLayout = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +43,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         mLayout = findViewById(R.id.content_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
@@ -61,7 +53,7 @@ public class MainActivity extends AppCompatActivity
         Fragment f = mFM.findFragmentById(R.id.fragmento_lista);
         if (f == null) showHelpFragment();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,13 +63,13 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -101,7 +93,7 @@ public class MainActivity extends AppCompatActivity
      */
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -165,68 +157,69 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        FragmentTransaction ft = mFM.beginTransaction();
+        switch (item.getItemId()) {
+            case R.id.nav_controls: //Opción mostrar fragmento de controles básicos
 
-        if (id == R.id.nav_controls) {//Opción mostrar fragmento de controles básicos
+                //Se obtiene el fragmento que se esté mostrando actualemente
 
-            //Se obtiene el fragmento que se esté mostrando actualemente
-            FragmentTransaction ft = mFM.beginTransaction();
-            Fragment f = mFM.findFragmentById(R.id.fragmento_lista);
-            FragmentoControles controles = new FragmentoControles();
-            if (f != null) {//Si ya hay un fragmento se elimina
-                ft.remove(f);
-                ft.replace(R.id.fragmento_lista, controles);
-            } else {//Si no hay fragmento, se añade simplemente
-                ft.add(R.id.fragmento_lista, controles, "controles");
-            }
-            ft.commit();
-        }else
-        if (id == R.id.nav_almacenamiento) {//Opción mostrar fragmento de almacenamiento
-
-            //Se obtiene el fragmento que se esté mostrando actualemente
-            FragmentTransaction ft = mFM.beginTransaction();
-            Fragment f = mFM.findFragmentById(R.id.fragmento_lista);
-            FragmentoAlmacenamiento almacenamiento = new FragmentoAlmacenamiento();
-            if (f != null) {//Si ya hay un fragmento se elimina
-                ft.remove(f);
-                ft.replace(R.id.fragmento_lista, almacenamiento);
-            } else {//Si no hay fragmento, se añade simplemente
-                ft.add(R.id.fragmento_lista, almacenamiento, "almacenamiento");
-            }
-            ft.commit();
-
-        } else if (id == R.id.nav_layouts) {
-            FragmentTransaction ft = mFM.beginTransaction();
-            Fragment f = mFM.findFragmentById(R.id.fragmento_lista);
-            FragmentoLista lista = new FragmentoLista();
-            if (f != null) {
-                ft.remove(f);
-                ft.replace(R.id.fragmento_lista, lista);
-            } else {
-                ft.add(R.id.fragmento_lista, lista, "lista");
-            }
-
-
-            if (findViewById(R.id.fragmento_detalles) != null) {
-                FragmentoPanel panel = (FragmentoPanel) getSupportFragmentManager().findFragmentByTag(FRAGMENTO_DETALLES);
-                if (panel == null) {
-                    panel = new FragmentoPanel();
-                    ft.add(R.id.fragmento_detalles, panel, FRAGMENTO_DETALLES);
-                    ft.addToBackStack(FRAGMENTO_DETALLES);
+                Fragment f = mFM.findFragmentById(R.id.fragmento_lista);
+                FragmentoControles controles = new FragmentoControles();
+                if (f != null) {//Si ya hay un fragmento se elimina
+                    ft.remove(f);
+                    ft.replace(R.id.fragmento_lista, controles);
+                } else {//Si no hay fragmento, se añade simplemente
+                    ft.add(R.id.fragmento_lista, controles, "controles");
                 }
-            }
+                ft.commit();
+                break;
+            case R.id.nav_almacenamiento: //Opción mostrar fragmento de almacenamiento
 
-            ft.commit();
+                //Se obtiene el fragmento que se esté mostrando actualemente
 
-        } else if (id == R.id.nav_fragmentosdinamicos) {
-            startActivity(new Intent(this, FragmentosDinamicos.class));
+                Fragment f2 = mFM.findFragmentById(R.id.fragmento_lista);
+                FragmentoAlmacenamiento almacenamiento = new FragmentoAlmacenamiento();
+                if (f2 != null) {//Si ya hay un fragmento se elimina
+                    ft.remove(f2);
+                    ft.replace(R.id.fragmento_lista, almacenamiento);
+                } else {//Si no hay fragmento, se añade simplemente
+                    ft.add(R.id.fragmento_lista, almacenamiento, "almacenamiento");
+                }
+                ft.commit();
+                break;
+            case R.id.nav_layouts:
+                Fragment f3 = mFM.findFragmentById(R.id.fragmento_lista);
+                FragmentoLista lista = new FragmentoLista();
+                if (f3 != null) {
+                    ft.remove(f3);
+                    ft.replace(R.id.fragmento_lista, lista);
+                } else {
+                    ft.add(R.id.fragmento_lista, lista, "lista");
+                }
 
-        } else if (id == R.id.nav_about) {
-            FragmentoAcercade fragmentoAcercade = FragmentoAcercade.newInstance("uno", "dos");
-            fragmentoAcercade.show(mFM, "acercade");
 
+                if (findViewById(R.id.fragmento_detalles) != null) {
+                    FragmentoPanel panel = (FragmentoPanel) getSupportFragmentManager().findFragmentByTag(FRAGMENTO_DETALLES);
+                    if (panel == null) {
+                        panel = new FragmentoPanel();
+                        ft.add(R.id.fragmento_detalles, panel, FRAGMENTO_DETALLES);
+                        ft.addToBackStack(FRAGMENTO_DETALLES);
+                    }
+                }
+
+                ft.commit();
+                break;
+
+            case R.id.nav_fragmentosdinamicos:
+                startActivity(new Intent(this, FragmentsActivity.class));
+                break;
+            case R.id.nav_about:
+                FragmentoAcercade fragmentoAcercade = FragmentoAcercade.newInstance("uno", "dos");
+                fragmentoAcercade.show(mFM, "acercade");
+                break;
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -238,6 +231,6 @@ public class MainActivity extends AppCompatActivity
      * Este es un ejemplo de comunicación entre Actividades y Fragmentos
      */
     public void onFragmentInteraction(Uri uri) {
-    //TODO Agregar una operación
+        //TODO Agregar una operación
     }
 }

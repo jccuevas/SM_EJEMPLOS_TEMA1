@@ -13,7 +13,7 @@ public class RecordsSQLiteHelper extends SQLiteOpenHelper implements RecordTable
 	private static final String DATABASE_CREATE = "create table "
 			+ TABLE_RECORDS + "(" + COLUMN_ID
 			+ " integer primary key autoincrement, " + COLUMN_TAG
-			+ " text not null, " + COLUMN_VALUE + " integer nor null);";
+			+ " text not null, " + COLUMN_VALUE + " integer not null);";
 
 	public RecordsSQLiteHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);

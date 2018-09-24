@@ -54,13 +54,13 @@ public class CarListAdapter extends BaseAdapter {
 		
 		m_parent=parent;
 
-		final TextView name = (TextView) rowView.findViewById(R.id.tag);
-		final TextView brand = (TextView) rowView
+		final TextView name = rowView.findViewById(R.id.tag);
+		final TextView brand = rowView
 				.findViewById(R.id.row_car_brand);
-		final TextView hp = (TextView) rowView
+		final TextView hp = rowView
 				.findViewById(R.id.row_car_hp);
 		
-		final ImageButton delete = (ImageButton) rowView
+		final ImageButton delete = rowView
 			.findViewById(R.id.row_car_delete);
 
 		current = values.get(position);

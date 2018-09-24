@@ -4,10 +4,8 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
-import android.support.v4.app.Fragment;
-import android.text.Editable;
 import android.text.Spannable;
+import android.text.SpannableString;
 import android.text.style.StyleSpan;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -26,9 +24,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
+import android.support.v4.app.Fragment;
 
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -49,7 +46,7 @@ public class FragmentoControles extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    final static public String[] datos = {"Verde", "Azul", "Rojo"};
+    final static private String[] datos = {"Verde", "Azul", "Rojo"};
 
 
     private OnFragmentInteractionListener mListener;
@@ -94,12 +91,12 @@ public class FragmentoControles extends Fragment {
         final View vista = inflater.inflate(R.layout.layout_fragment_controles, container, false);
 
 
-        final ImageButton iboton = (ImageButton) vista.findViewById(R.id.fragment_controles_imageButton);
-        Button boton = (Button) vista.findViewById(R.id.fragment_controles_button);
-        final TextView texto = (TextView) vista.findViewById(R.id.fragment_controles_textocentral);
-        RadioGroup radiog = (RadioGroup) vista.findViewById(R.id.fragment_controles_gruporb);
-        final EditText edittext = (EditText) vista.findViewById(R.id.fragment_controles_editText);
-        final CheckBox checkBox = (CheckBox) vista.findViewById(R.id.fragment_controles_checkbox);
+        final ImageButton iboton = vista.findViewById(R.id.fragment_controles_imageButton);
+        Button boton = vista.findViewById(R.id.fragment_controles_button);
+        final TextView texto =  vista.findViewById(R.id.fragment_controles_textocentral);
+        RadioGroup radiog = vista.findViewById(R.id.fragment_controles_gruporb);
+        final EditText edittext = vista.findViewById(R.id.fragment_controles_editText);
+        final CheckBox checkBox = vista.findViewById(R.id.fragment_controles_checkbox);
 
 
         iboton.setOnClickListener(new View.OnClickListener() {
@@ -142,7 +139,7 @@ public class FragmentoControles extends Fragment {
 
         radiog.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.radioButton1:
                         Toast.makeText(getContext(), getString(R.string.controles_radio1_opcion1), Toast.LENGTH_SHORT).show();
@@ -187,17 +184,21 @@ public class FragmentoControles extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 //Creamos un nuevo objeto de tipo Editable
-                String texto = edittext.getEditableText().toString();
-                Editable str = edittext.getEditableText();//Editable.Factory.getInstance().newEditable("Esto es negrita.");
+                SpannableString texto = new SpannableString(edittext.getEditableText().toString());
 
                 if (texto.length() > 0) {
                     if (buttonView.isChecked()) {
                         //Marcamos cono fuente negrita la palabra "simulacro"
-                        str.setSpan(new StyleSpan(Typeface.BOLD), 0, texto.length(), Spannable.SPAN_COMPOSING);
+                        texto.setSpan(new StyleSpan(Typeface.BOLD), 0, texto.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
                     } else {
-                        str.setSpan(new StyleSpan(Typeface.NORMAL), 0, texto.length(), Spannable.SPAN_COMPOSING);
+                        texto.setSpan(new StyleSpan(Typeface.NORMAL), 0, texto.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        //texto.removeSpan(new StyleSpan(Typeface.BOLD));
                     }
+
+                    edittext.setText(texto);
                 }
+
             }
         });
 

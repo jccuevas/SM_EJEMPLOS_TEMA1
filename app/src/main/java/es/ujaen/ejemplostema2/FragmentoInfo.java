@@ -27,16 +27,16 @@ public class FragmentoInfo extends Fragment {
 
 
         BufferedReader bis = new BufferedReader(new InputStreamReader(getContext().getResources().openRawResource(R.raw.help)));
-        String datos="";
         String linea="";
 
+        StringBuilder sb = new StringBuilder();
         try {
             linea=bis.readLine();
             while((linea=bis.readLine())!=null){
-                datos=datos+linea;
+                sb.append(linea);
             }
             bis.close();
-            mInfo.loadData(datos,"text/html","UTF-8");
+            mInfo.loadData(sb.toString(),"text/html","UTF-8");
         } catch (IOException e) {
             e.printStackTrace();
         }
